@@ -14,9 +14,39 @@ format:
 
 # Introduction
 
+Contract:
+
+* Preprocessing of 205 samples 
+* CNV and SNV detection
+* Format data to allow for analysis of  correlation wiht survival and clinical annotation
+* Detection of differences in CNV and SNV between primary tumors and lymph node or distant metastases
+* Correlation with tumor grouping and BC360 gene signatures based on Nanostring expression data
+
+[150 hours]
+
 # Material and Methods
 
+
+
 # Results
+
+## Quality control 
+
+## Variant Calling
+
+::: {.panel-tabset}
+
+# Primary Tumor
+
+# Distant Metastases
+
+# Lymph Node Metastases
+
+:::
+
+## Tumor Mutational Burden
+
+## Copy Number Alteration
 
 # Data Responsibility
 
