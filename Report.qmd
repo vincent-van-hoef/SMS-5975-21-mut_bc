@@ -34,7 +34,10 @@ Raw reads were trimmed using TrimGalore v0.6.1 prior to mapping to GRCh37 using 
 
 ## Variant Calling
 
-Somatic variant calling of primary tumors was done by combining the results of three variant callers; i.e. mutect2 v4.2.0, 
+Somatic variant calling of primary tumors was performed by combining the results of three variant callers; i.e. Mutect2 v4.2.0, VarScan v2.4.2 and freebayes v1.3.2. These were chosen because they are capable of running without a matched normal semple. Mutect2 was supplied with a panel of normals ("somatic-b37-Mutect2-exome-panel") and a germline resource ("gnomAD.r2.1.1.GRCh37.PASS.AC.AF.only"). VarScan was run with standard parameters and freebayes was run with -F 0.01 -C 2 --pooled-continuous and subsequently filtered to retain calls with QUAL > 20. Variant calling was restricted to the list of targets used for the hybrid capture.
+Variants found in all three callers were called again using the *call* command from bcftools 1.14 and annotated with VEP v99 using the *vcf2maf.pl* script from vcf2maf v1.6.21.
+
+Somatic calling for the distant and lymph node metastases was done slightly different. For these samples, the matched primary tumor was used as a *pseudo* normal sample and variant calling was performed by Mutect2. A custom panel-of-normals was created from the primary tumors using the *CreateSomaticPanelOfNormals* command from GATK. The same germline resource was used as the one employed for the primary tumor analysis. Contamination was estimated and Mutect2 calls were filtered as per the appropriate [GATK workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035531132).
 
 ## Filtering
 
