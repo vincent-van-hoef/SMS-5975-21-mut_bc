@@ -3,16 +3,18 @@ title: "Tumor progression in breast cancer reflected in gene expression patterns
 subtitle: "Project #5975"
 author: "Vincent van Hoef"
 date: today
-title-block-banner: "./assets/NBIS-logo2.png"
-title-block-banner-color: black
+title-block-banner: true
 format:
     html:
         theme: cosmo
         toc: true
         toc-location: left
+        css: "./assets/style.css"
 ---
 
 # Introduction
+
+This is the report of the analysis for project #5975, requested by Lisa Rydén (LU).
 
 Contract:
 

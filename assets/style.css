@@ -1,17 +1,10 @@
-/*--- LOGO ---*/
-
-.toc-logo {
-    width: 300px !important;
-    object-fit: fill;
-    margin: 0 auto;
-    display: block;
-}
-  
-  .toc-logo img {
-    max-width: 100%;
-    margin-bottom: 5px;
-}
-  
-  .summary > li:first-child {
-    height: auto !important; 
+#quarto-margin-sidebar::before {
+  content: "";
+  height: 120px;
+  width: 120px;
+  float: right;
+  background-image: url("NBIS-logo.png");
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
 }
