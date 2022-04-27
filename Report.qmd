@@ -20,7 +20,7 @@ Contract:
 
 * Preprocessing of 205 samples 
 * CNV and SNV detection
-* Format data to allow for analysis of  correlation with survival and clinical annotation
+* Format data to allow for analysis of correlation with survival and clinical annotation
 * Detection of differences in CNV and SNV between primary tumors and lymph node or distant metastases
 * Correlation with tumor grouping and BC360 gene signatures based on Nanostring expression data
 
@@ -30,7 +30,11 @@ Contract:
 
 ## Preprocessing
 
+Raw reads were trimmed using TrimGalore v0.6.1 prior to mapping to GRCh37 using bwa mem of bwa v0.7.17. Subsequently, duplicates were tagged and removed using MarkDuplicates from picard v2.23.4. Base recalibration was performed and applied using GATK v4.2.0 with known sites dbsnp_138, 1000G_phase1 and Mills_and_1000G_gold_Standard_indels.
+
 ## Variant Calling
+
+Somatic variant calling of primary tumors was done by combining the results of three variant callers; i.e. mutect2 v4.2.0, 
 
 ## Filtering
 
@@ -40,7 +44,31 @@ Contract:
 
 # Results
 
+A quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}.
+
 ## Quality control 
+
+::: {.panel-tabset}
+
+# Before Trimming
+
+::: {#fig-pre-trim-qc}
+
+<iframe src="./Results/QC/multiqc_report.html"></iframe>
+
+Pre Trim QC
+:::
+
+# After Trimming
+
+::: {#fig-pre-trim-qc}
+
+<iframe src="./Results/QC/multiqc_report_after_trim.html"></iframe>
+
+Post Trim QC
+:::
+
+:::
 
 ## Variant Calling
 

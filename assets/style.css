@@ -1,10 +1,15 @@
-#quarto-margin-sidebar::before {
+#quarto-sidebar-toc-left::before {
   content: "";
-  height: 120px;
-  width: 120px;
-  float: right;
+  float: left;
+  padding-right: 100%;
+  padding-bottom: 50%;
   background-image: url("NBIS-logo.png");
-  background-size: contain;
-  background-position: top;
+  background-size: 70%;
+  background-position: left;
   background-repeat: no-repeat;
+}
+
+iframe {
+  width: 800px;
+  height: 800px;
 }
