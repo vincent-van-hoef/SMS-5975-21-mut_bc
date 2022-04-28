@@ -4,6 +4,10 @@ subtitle: "Project #5975"
 author: "Vincent van Hoef"
 date: today
 title-block-banner: true
+reference-location: margin
+citation-location: margin
+bibliography: ./assets/citations.bib
+csl: ./assets/mla.cls
 format:
     html:
         theme: cosmo
@@ -34,26 +38,33 @@ Raw reads were trimmed using TrimGalore v0.6.1 prior to mapping to GRCh37 using 
 
 ## Variant Calling
 
-Somatic variant calling of primary tumors was performed by combining the results of three variant callers; i.e. Mutect2 v4.2.0, VarScan v2.4.2 and freebayes v1.3.2. These were chosen because they are capable of running without a matched normal semple. Mutect2 was supplied with a panel of normals ("somatic-b37-Mutect2-exome-panel") and a germline resource ("gnomAD.r2.1.1.GRCh37.PASS.AC.AF.only"). VarScan was run with standard parameters and freebayes was run with -F 0.01 -C 2 --pooled-continuous and subsequently filtered to retain calls with QUAL > 20. Variant calling was restricted to the list of targets used for the hybrid capture.
-Variants found in all three callers were called again using the *call* command from bcftools 1.14 and annotated with VEP v99 using the *vcf2maf.pl* script from vcf2maf v1.6.21.
+Somatic variant calling of primary tumors was performed by combining the results of three variant callers; i.e. Mutect2 v4.2.0, VarScan v2.4.2 and freebayes v1.3.2. These were chosen because they are capable of running without a matched normal semple. Mutect2 was supplied with a panel of normals ("somatic-b37-Mutect2-exome-panel") and a germline resource ("gnomAD.r2.1.1.GRCh37.PASS.AC.AF.only"). VarScan was run with standard parameters and freebayes was run with -F 0.01 -C 2 --pooled-continuous and subsequently filtered to retain calls with QUAL > 20. Variant calling was restricted to the list of targets used for the hybrid capture. Variants found in all three callers were called again using the *call* command from bcftools 1.14 and annotated with VEP v99 using the *vcf2maf.pl* script from vcf2maf v1.6.21.
 
 Somatic calling for the distant and lymph node metastases was done slightly different. For these samples, the matched primary tumor was used as a *pseudo* normal sample and variant calling was performed by Mutect2. A custom panel-of-normals was created from the primary tumors using the *CreateSomaticPanelOfNormals* command from GATK. The same germline resource was used as the one employed for the primary tumor analysis. Contamination was estimated and Mutect2 calls were filtered as per the appropriate [GATK workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035531132).
 
 ## Filtering
 
+In addition to taking the intersect of the results of the three variant callers, variants which are present at a variant allele frequency (VAF) > 1% in the Genome Aggregation Database (gnomAD) were removed. Files with raw nd filtered variant calls are provided witht his report. 
+
 ## Copy Number Analysis
+
+For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. The primary tumors were used to create a *pseudo* normal coverage profile.
 
 ## Tumor Mutational Burden
 
+To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding known cancer mutations but including synonymous mutations. There are several ways to define the TMB. The one used here is described as well in the TMBLeR's manual.
+
 # Results
 
-A quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}.
+Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}.
 
 ## Quality control 
 
 ::: {.panel-tabset}
 
 # Before Trimming
+
+FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately.
 
 ::: {#fig-pre-trim-qc}
 
@@ -63,6 +74,8 @@ Pre Trim QC
 :::
 
 # After Trimming
+
+The tool was run again after removal of low quality bases and adapter sequences.
 
 ::: {#fig-pre-trim-qc}
 
@@ -78,6 +91,24 @@ Post Trim QC
 ::: {.panel-tabset}
 
 # Primary Tumor
+
+::: {.panel-tabset}
+
+# Overview
+
+::: {#fig-pt-overview}
+<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf"></iframe>
+Overview of Primary Tumor samples
+:::
+
+# Oncoplot
+
+::: {#fig-pt-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf"></iframe>
+Oncoplot of Primary Tumor samples
+:::
+
+::::
 
 # Distant Metastases
 
