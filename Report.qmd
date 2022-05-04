@@ -221,13 +221,11 @@ The file containing the TMB results can be downloaded.
 
 ## Copy Number Alteration
 
-Copy number alterations were estimated using the R package pureCN. 
+Copy number alterations were estimated using the R package pureCN. In this, metastases were compared to their matched primary tumor. It is important to keep in mind that therefore these results can be affected by the state of the primary tumor; e.g. a deletion in the primary tumor might seem an amplification in the matched distant tumor.
 
 ::: {.panel-tabset}
 
 # Distant Metastases
-
-
 
 ```{ojs}
 all_genes = FileAttachment("./Results/CNA/distant_tumor/all_genes.csv").csv({typed: true})
@@ -248,7 +246,7 @@ filtered = all_genes.filter(function(dat) { return gene.includes(dat.genesymbol)
 Inputs.table(filtered, {columns})
 ```
 
-The per gene statistics for each sample can be downloaded here. A description of the columns can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
 <a href="./Results/distant_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
 
@@ -283,18 +281,57 @@ html`<iframe src="./Results/CNA/distant_tumor/${plot}_segmentation.pdf" style="w
 
 # Lymph Node Metastases
 
-The per gene statistics for each sample can be downloaded here. A description of the columns can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+```{ojs}
+all_genes_lnm = FileAttachment("./Results/CNA/lymph_node/all_genes.csv").csv({typed: true})
+columns_lnm = [0,1,2,3,4,15].map(x=>all_genes_lnm.columns[x])
+```
 
-<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases CNA data</button></a>
+```{ojs}
+//| panel: input
+viewof gene_lnm = Inputs.select(all_genes_lnm.map(d => d.genesymbol), {unique: true, label: "Select a gene: "})
+viewof type_lnm = Inputs.checkbox(["AMPLIFICATION", "DELETION", "NA"], {label: "Select type of alteration: ", value: ["AMPLIFICATION", "DELETION"]})
+```
 
-::: {#fig-cna-ln layout-ncol=2}
+```{ojs}
+filtered_lnm = all_genes_lnm.filter(function(dat) { return gene_lnm.includes(dat.genesymbol) && type_lnm.includes(dat.type)})
+```
 
-<iframe src="./Results/CNA/distant_tumor/Amplified_in_distant_tumor_vs_primary_tumor.pdf" style="width:100%; height:350px;"></iframe>
+```{ojs}
+Inputs.table(filtered_lnm, {columns: columns_lnm})
+```
 
-<iframe src="./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.pdf" style="width:100%; height:350px;"></iframe>
+The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-Most Common Alterations in Lymph Node Metastases versus Primary Tumor.
+<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
+
+::: {#fig-cna-lnm layout-ncol=2 height="1500px"}
+
+![Amplified](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-amp}
+
+![Deleted](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-del}
+
+Most Common Alterations in Lymph Node Tumor versus Primary Tumor.
 :::
+
+
+Here you can see the results per patient.
+
+```{r}
+fl <- list.files(path = "./Results/CNA/lymph_node/", pattern = "*_segmentation.pdf")
+fl <- as.list(gsub("_segmentation.pdf", "", fl))
+ojs_define(plots_lnm = fl)
+```
+
+```{ojs}
+viewof plot_lnm = Inputs.select(plots_lnm, { label: "Choose Patient" })
+html`<p></p>`
+```
+
+```{ojs}
+//| label: fig-lnm-seg
+//| fig-cap: "Test Dropdown"
+html`<iframe src="./Results/CNA/lymph_node//${plot_lnm}_segmentation.pdf" style="width:100%; height:700px;"></iframe>`
+```
 
 :::
 
