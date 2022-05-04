@@ -16,11 +16,13 @@ format:
         css: "./assets/style.css"
         self-contained: false
         include-before-body: ./assets/custom.html
+execute: 
+  echo: false
 ---
 
 # Introduction
 
-This is the report of the analysis for project #5975, requested by Lisa Rydén (LU).
+This is the report of the analysis for project #5975, requested by Lisa Rydén (LU). For this study, targeted next generation sequencing by hybridization capture was performed to get data about a panel of approx 450 genes. The main aim of the analysis is to call somatic variants in a collection of 205 breast cancer samples; some of which are matched pairs of primary tumors and distance metastases or primary tumors and lymph node metastases. Matched normal samples are however not available but can be included later for more accurate results. 
 
 Contract:
 
@@ -32,7 +34,7 @@ Contract:
 
 [150 hours]
 
-:::{.callout-warning}
+:::{.callout-note}
 If the download buttons in this report do not work as expected, you might have to update your browser or use the Chrome browser. Alternatively, right-click and "save as ..." should also work.
 :::
 
@@ -40,13 +42,13 @@ If the download buttons in this report do not work as expected, you might have t
 
 ## Preprocessing
 
-Raw reads were trimmed using TrimGalore v0.6.1 prior to mapping to GRCh37 using bwa mem of bwa v0.7.17. Subsequently, duplicates were tagged and removed using MarkDuplicates from picard v2.23.4. Base recalibration was performed and applied using GATK v4.2.0 with known sites dbsnp_138, 1000G_phase1 and Mills_and_1000G_gold_Standard_indels.
+Raw reads were trimmed using TrimGalore v0.6.1 prior to mapping to GRCh37 using bwa mem of bwa v0.7.17. Subsequently, duplicates were tagged and removed using MarkDuplicates from picard v2.23.4. Base recalibration was performed and applied using GATK v4.2.0 with known sites datasets dbsnp_138, 1000G_phase1 and Mills_and_1000G_gold_Standard_indels.
 
 ## Variant Calling
 
 Somatic variant calling of all samples was performed by combining the results of three variant callers; i.e. Mutect2 v4.2.0, VarScan v2.4.2 and freebayes v1.3.2. These were chosen because they are capable of running without a matched normal sample. Mutect2 was supplied with a generic panel-of-normals ("somatic-b37-Mutect2-exome-panel") and a germline resource ("gnomAD.r2.1.1.GRCh37.PASS.AC.AF.only"). VarScan was run with standard parameters and freebayes was run with -F 0.01 -C 5 --pooled-continuous and subsequently filtered to retain calls with QUAL > 20. Variant calling was restricted to the list of targets used for the hybrid capture. Variants found in all three callers were called again using the *call* command from bcftools 1.14 and annotated with VEP v99 using the *vcf2maf.pl* script from vcf2maf v1.6.21.
 
-Additionally, somatic calling for the distant and lymph node metastases was done in a more rigorous manner. For these samples, the matched primary tumor was used as a *pseudo* normal sample and variant calling was performed by Mutect2 only. A custom panel-of-normals was created from the primary tumors using the *CreateSomaticPanelOfNormals* command from GATK. The same germline resource was used as the one employed for the primary tumor analysis. Contamination was estimated and Mutect2 calls were filtered as per the appropriate [GATK workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035531132). Keep in mind that this protocol only detects variants that are a variant in the metastasis as compared to the primary tumor. It does not tell us anything about the variants of the primary tumor in itself.
+Additionally, somatic calling for the distant and lymph node metastases was done in a more rigorous manner. For these samples, the matched primary tumor was used as a *pseudo* normal sample and variant calling was performed by Mutect2 only. A custom panel-of-normals was created from the primary tumors using the *CreateSomaticPanelOfNormals* command from GATK. The same germline resource was used as the one employed for the primary tumor analysis. Contamination was estimated and Mutect2 calls were filtered as per the appropriate [GATK workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035531132). Keep in mind that this protocol only detects variants that are a variant in the metastatic sample but not in the primary tumor. It does not tell us anything about the variants of the primary tumor in itself; if both primary and metasasis have the variant it is not withheld in this analysis.
 
 ## Filtering
 
@@ -56,13 +58,15 @@ In addition to taking the intersect of the results of the three variant callers,
 
 For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. It was designed for hybrid capture sequencing data, especially with medium-sized targeted gene panels without matching normal samples in mind (matched whole-exome data is of course supported). The primary tumors were used to create a *pseudo* normal coverage profile which is then compared to the metastatic sample. Keep in mind that this means that any copy number alteration is a change in the metastasis as compared to the primary tumor. It does not tell us anything about the status of the primary tumor in intself.
 
+Analysis of the copy number alterations in the primary tumors was considered to be too unreliable without a matched normal sample.
+
 ## Tumor Mutational Burden
 
 To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding known cancer mutations but including synonymous mutations. There are several ways to define and filter the TMB. The filtering used here is described as well in the TMBLeR's manual.
 
 # Results
 
-Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}.
+Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}. Three samples are corrupted and were removed (11,12 and 19)
 
 ## Quality control 
 
@@ -94,13 +98,15 @@ Post Trim QC
 
 :::
 
+Overall, the quality is sufficient to proceed with the analysis.
+
 ### Coverage
 
 The average read depth per target (7455 targets per sample) and per sample is shown in @fig-coverage-plot.
 
 ![Average Coverage per target per sample](./Results/QC/coverage/Coverage_Plot.svg){#fig-coverage-plot}
 
-Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind.
+Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.
 
 ## Variant Calling
 
@@ -110,11 +116,16 @@ Here you can find the results of the variant calling analysis for the different 
 
 # Primary Tumor
 
-The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis.
+The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files.
 
-<a href="./Results/all_samples/3_common_vcf.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files</button></a>
+<a href="/Results/all_samples_freebayes.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Freebayes only</button></a>
 
-The standard format to store variant information is as VCF files.
+<a href="./Results/all_samples_varscan.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - VarScan only</button></a>
+
+<a href="./Results/all_samples_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Mutect2 only</button></a>
+
+
+<a href="./Results/all_samples/3_common_vcf.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Combined Variants</button></a>
 
 
 ::: {.panel-tabset}
@@ -123,21 +134,82 @@ The standard format to store variant information is as VCF files.
 
 ::: {#fig-pt-overview}
 <iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Overview of Primary Tumor samples
+Overview of Primary Tumor samples.
 :::
 
 # Oncoplot
 
 ::: {#fig-pt-oncoplot}
 <iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Oncoplot of Primary Tumor samples
+Oncoplot of Primary Tumor samples.
 :::
 
-::::
+# Interaction
+
+::: {#fig-pt-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Co-occurrence of common mutations.
+:::
+
+:::
 
 # Distant Metastases
 
+<a href="./Results/distant_tumor_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Tumor VCF Files - Mutect2 only</button></a>
+
+::: {.panel-tabset}
+
+# Overview
+
+::: {#fig-dt-overview}
+<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Overview of Primary Tumor samples.
+:::
+
+# Oncoplot
+
+::: {#fig-dt-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Oncoplot of Primary Tumor samples.
+:::
+
+# Interaction
+
+::: {#fig-dt-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Co-occurrence of common mutations.
+:::
+
+:::
+
 # Lymph Node Metastases
+
+<a href="./Results/lymph_node_tumor_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Tumor VCF Files - Mutect2 only</button></a>
+
+::: {.panel-tabset}
+
+# Overview
+
+::: {#fig-lnm-overview}
+<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Overview of Primary Tumor samples.
+:::
+
+# Oncoplot
+
+::: {#fig-lnm-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Oncoplot of Primary Tumor samples.
+:::
+
+# Interaction
+
+::: {#fig-lnm-oncoplot}
+<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+Co-occurrence of common mutations.
+:::
+
+:::
 
 :::
 
@@ -149,28 +221,71 @@ The file containing the TMB results can be downloaded.
 
 ## Copy Number Alteration
 
+Copy number alterations were estimated using the R package pureCN. 
+
 ::: {.panel-tabset}
 
 # Distant Metastases
 
+
+
+```{ojs}
+all_genes = FileAttachment("./Results/CNA/distant_tumor/all_genes.csv").csv({typed: true})
+columns = [0,1,2,3,4,15].map(x=>all_genes.columns[x])
+```
+
+```{ojs}
+//| panel: input
+viewof gene = Inputs.select(all_genes.map(d => d.genesymbol), {unique: true, label: "Select a gene: "})
+viewof type = Inputs.checkbox(["AMPLIFICATION", "DELETION", "NA"], {label: "Select type of alteration: ", value: ["AMPLIFICATION", "DELETION"]})
+```
+
+```{ojs}
+filtered = all_genes.filter(function(dat) { return gene.includes(dat.genesymbol) && type.includes(dat.type)})
+```
+
+```{ojs}
+Inputs.table(filtered, {columns})
+```
+
 The per gene statistics for each sample can be downloaded here. A description of the columns can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="./Results/tmb/TMB_Result_table.csv" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases Gene-level CNA data</button></a>
+<a href="./Results/distant_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
 
-::: {#fig-cna-dm layout-ncol=2}
+::: {#fig-cna-dm layout-ncol=2 height="1500px"}
 
-![Amplified](./Results/CNA/distant_tumor/Amplified_in_distant_tumor_vs_primary_tumor.pdf){#fig-cna-dm-amp}
+![Amplified](./Results/CNA/distant_tumor/Amplified_in_distant_tumor_vs_primary_tumor.png){#fig-cna-dm-amp}
 
-![Deleted](./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.pdf){#fig-cna-dm-del}
+![Deleted](./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.png){#fig-cna-dm-del}
 
 Most Common Alterations in Distant Tumor versus Primary Tumor.
 :::
+
+
+Here you can see the results per patient.
+
+```{r}
+fl <- list.files(path = "./Results/CNA/distant_tumor/", pattern = "*_segmentation.pdf")
+fl <- as.list(gsub("_segmentation.pdf", "", fl))
+ojs_define(plots = fl)
+```
+
+```{ojs}
+viewof plot = Inputs.select(plots, { label: "Choose Patient" })
+html`<p></p>`
+```
+
+```{ojs}
+//| label: fig-test
+//| fig-cap: "Test Dropdown"
+html`<iframe src="./Results/CNA/distant_tumor/${plot}_segmentation.pdf" style="width:100%; height:700px;"></iframe>`
+```
 
 # Lymph Node Metastases
 
 The per gene statistics for each sample can be downloaded here. A description of the columns can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="./Results/tmb/TMB_Result_table.csv" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases Gene-level CNA data</button></a>
+<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases CNA data</button></a>
 
 ::: {#fig-cna-ln layout-ncol=2}
 
@@ -184,6 +299,8 @@ Most Common Alterations in Lymph Node Metastases versus Primary Tumor.
 :::
 
 ## Nanostring data
+
+
 
 # Data Responsibility
 
