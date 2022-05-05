@@ -20,9 +20,13 @@ execute:
   echo: false
 ---
 
+```{r}
+library(DT)
+```
+
 # Introduction
 
-This is the report of the analysis for project #5975, requested by Lisa Rydén (LU). For this study, targeted next generation sequencing by hybridization capture was performed to get data about a panel of approx 450 genes. The main aim of the analysis is to call somatic variants in a collection of 205 breast cancer samples; some of which are matched pairs of primary tumors and distance metastases or primary tumors and lymph node metastases. Matched normal samples are however not available but can be included later for more accurate results. 
+This is the report of the analysis for project #5975, requested by Lisa Rydén (LU). For this study, targeted next generation sequencing by hybridization capture was performed to get data about a panel of approx 450 genes. The main aim of the analysis is to call somatic variants in a collection of 205 breast cancer samples; some of which are matched pairs of primary tumors and distance metastases or primary tumors and lymph node metastases. Matched normal samples are however not available but might be included later for more accurate results. 
 
 Contract:
 
@@ -35,8 +39,15 @@ Contract:
 [150 hours]
 
 :::{.callout-note}
-If the download buttons in this report do not work as expected, you might have to update your browser or use the Chrome browser. Alternatively, right-click and "save as ..." should also work.
+If the visualization in this report do not work as expected, you might have to update or change your browser. Please let me know if any plots seem strange or absent.
 :::
+
+205 samples are included in this study. [below table contains 207 entries, but 2 samples were not sequenced.]
+
+```{r}
+meta <- read.csv("./Results/Additional_info_tCelemics_20210819.csv", sep = ";")
+datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
+```
 
 # Material and Methods
 
@@ -66,17 +77,17 @@ To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The
 
 # Results
 
-Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}. Three samples are corrupted and were removed (11,12 and 19)
+Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}. Three samples are corrupted and were removed (11,12 and 19).
 
 ## Quality control 
 
 ### FastQC
 
-::: {.panel-tabset}
+::: {.panel-tabset .column-body-outset}
 
 # Before Trimming
 
-FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately.
+FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.
 
 ::: {#fig-pre-trim-qc}
 
@@ -102,7 +113,7 @@ Overall, the quality is sufficient to proceed with the analysis.
 
 ### Coverage
 
-The average read depth per target (7455 targets per sample) and per sample is shown in @fig-coverage-plot.
+The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
 ![Average Coverage per target per sample](./Results/QC/coverage/Coverage_Plot.svg){#fig-coverage-plot}
 
@@ -215,13 +226,15 @@ Co-occurrence of common mutations.
 
 ## Tumor Mutational Burden
 
-The file containing the TMB results can be downloaded.
-
-<a href="./Results/tmb/TMB_Result_table.csv" download><button class="btn"><i class="fa fa-download"></i> Download TMB Results</button></a>
+```{r}
+tmb <- read.csv("./Results/tmb/TMB_Result_table.csv", sep = ",")
+tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
+datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
+```
 
 ## Copy Number Alteration
 
-Copy number alterations were estimated using the R package pureCN. In this, metastases were compared to their matched primary tumor. It is important to keep in mind that therefore these results can be affected by the state of the primary tumor; e.g. a deletion in the primary tumor might seem an amplification in the matched distant tumor.
+Copy number alterations were estimated using the R package pureCN. In this analysis, metastases were compared to their matched primary tumor. It is important to keep in mind that therefore these results can be affected by the state of the primary tumor as well; e.g. an amplification in a lymph node tumor might indicate a deletion in the matched primary tumor rather than a genuine amplification.
 
 ::: {.panel-tabset}
 
@@ -246,7 +259,7 @@ filtered = all_genes.filter(function(dat) { return gene.includes(dat.genesymbol)
 Inputs.table(filtered, {columns})
 ```
 
-The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
 <a href="./Results/distant_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
 
@@ -262,22 +275,26 @@ Most Common Alterations in Distant Tumor versus Primary Tumor.
 
 Here you can see the results per patient.
 
+
 ```{r}
 fl <- list.files(path = "./Results/CNA/distant_tumor/", pattern = "*_segmentation.pdf")
 fl <- as.list(gsub("_segmentation.pdf", "", fl))
 ojs_define(plots = fl)
 ```
 
+
 ```{ojs}
 viewof plot = Inputs.select(plots, { label: "Choose Patient" })
 html`<p></p>`
 ```
+
 
 ```{ojs}
 //| label: fig-test
 //| fig-cap: "Test Dropdown"
 html`<iframe src="./Results/CNA/distant_tumor/${plot}_segmentation.pdf" style="width:100%; height:700px;"></iframe>`
 ```
+
 
 # Lymph Node Metastases
 
@@ -302,13 +319,13 @@ Inputs.table(filtered_lnm, {columns: columns_lnm})
 
 The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
+<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases CNA data</button></a>
 
 ::: {#fig-cna-lnm layout-ncol=2 height="1500px"}
 
-![Amplified](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-amp}
+![Amplified](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.png){#fig-cna-lnm-amp}
 
-![Deleted](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-del}
+![Deleted](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.png){#fig-cna-lnm-del}
 
 Most Common Alterations in Lymph Node Tumor versus Primary Tumor.
 :::
@@ -322,10 +339,12 @@ fl <- as.list(gsub("_segmentation.pdf", "", fl))
 ojs_define(plots_lnm = fl)
 ```
 
+
 ```{ojs}
 viewof plot_lnm = Inputs.select(plots_lnm, { label: "Choose Patient" })
 html`<p></p>`
 ```
+
 
 ```{ojs}
 //| label: fig-lnm-seg
