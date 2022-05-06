@@ -240,10 +240,10 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 # Distant Metastases
 
-```{r}
-dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
-datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
-```
+#```{r}
+#dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
+#datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
+#```
 
 The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
@@ -284,10 +284,10 @@ html`<iframe src="./Results/CNA/distant_tumor/${plot}_segmentation.pdf" style="w
 
 # Lymph Node Metastases
 
-```{r}
-dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
-datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
-```
+#```{r}
+#dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
+#datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
+#```
 
 The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
@@ -330,7 +330,9 @@ html`<iframe src="./Results/CNA/lymph_node//${plot_lnm}_segmentation.pdf" style=
 
 ## Nanostring data
 
+## Survival Data
 
+  <iframe src="https://uppsala.app.box.com/embed/s/4vuofjoibbam64ycrbwn20h5agcirpc8?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
 
 # Data Responsibility
 
