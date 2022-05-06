@@ -247,7 +247,7 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="https://uppsala.box.com/s/zuhdyge2uhwg9mgkoas5gob7b34mby6v" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
+<a href="https://uppsala.box.com/v/lymphnodecopynumberdata" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
 
 ::: {#fig-cna-dm layout-ncol=2 height="1500px"}
 
