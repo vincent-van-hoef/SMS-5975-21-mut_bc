@@ -226,11 +226,11 @@ Co-occurrence of common mutations.
 
 ## Tumor Mutational Burden
 
-```{r}
-tmb <- read.csv("./Results/tmb/TMB_Result_table.csv", sep = ",")
-tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
-datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
-```
+#```{r}
+#tmb <- read.csv("./Results/tmb/TMB_Result_table.csv", sep = ",")
+#tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
+#datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
+#```
 
 ## Copy Number Alteration
 
@@ -240,28 +240,14 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 # Distant Metastases
 
-```{ojs}
-all_genes = FileAttachment("./Results/CNA/distant_tumor/all_genes.csv").csv({typed: true})
-columns = [0,1,2,3,4,15].map(x=>all_genes.columns[x])
-```
-
-```{ojs}
-//| panel: input
-viewof gene = Inputs.select(all_genes.map(d => d.genesymbol), {unique: true, label: "Select a gene: "})
-viewof type = Inputs.checkbox(["AMPLIFICATION", "DELETION", "NA"], {label: "Select type of alteration: ", value: ["AMPLIFICATION", "DELETION"]})
-```
-
-```{ojs}
-filtered = all_genes.filter(function(dat) { return gene.includes(dat.genesymbol) && type.includes(dat.type)})
-```
-
-```{ojs}
-Inputs.table(filtered, {columns})
+```{r}
+dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
+datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
 The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="./Results/distant_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
+<a href="https://uppsala.box.com/s/zuhdyge2uhwg9mgkoas5gob7b34mby6v" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
 
 ::: {#fig-cna-dm layout-ncol=2 height="1500px"}
 
