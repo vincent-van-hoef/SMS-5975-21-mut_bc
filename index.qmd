@@ -91,7 +91,7 @@ FastQC was run on the raw sequences as they are delivered by the sequencing faci
 
 ::: {#fig-pre-trim-qc}
 
-<iframe src="./Results/QC/multiqc_report.html"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/duzxrc9hcqrtxjllsy4ucvtfxm9b7ufw?sortColumn=date&view=icon"></iframe>
 
 Pre Trim QC
 :::
@@ -251,9 +251,9 @@ The full results of the pureCN analysis per patient can be downloaded with the b
 
 ::: {#fig-cna-dm layout-ncol=2 height="1500px"}
 
-![Amplified](./Results/CNA/distant_tumor/Amplified_in_distant_tumor_vs_primary_tumor.png){#fig-cna-dm-amp}
+![Amplified]<iframe src="https://uppsala.app.box.com/embed/s/y7lakkl8o8szuxjqbrnfvazxczg9huga?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>{#fig-cna-dm-amp}
 
-![Deleted](./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.png){#fig-cna-dm-del}
+![Deleted](./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.pdf){#fig-cna-dm-del}
 
 Most Common Alterations in Distant Tumor versus Primary Tumor.
 :::
@@ -309,15 +309,17 @@ The full results of the pureCN analysis per patient can be downloaded here. Ther
 
 ::: {#fig-cna-lnm layout-ncol=2 height="1500px"}
 
-![Amplified](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.png){#fig-cna-lnm-amp}
+![Amplified](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-amp}
 
-![Deleted](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.png){#fig-cna-lnm-del}
+![Deleted](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.pdf){#fig-cna-lnm-del}
 
 Most Common Alterations in Lymph Node Tumor versus Primary Tumor.
 :::
 
 
 Here you can see the results per patient.
+
+  <iframe src="https://uppsala.app.box.com/embed/s/h3rs5sctm0c559yw8qyer235deh22yri?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
 
 ```{r}
 fl <- list.files(path = "./Results/CNA/lymph_node/", pattern = "*_segmentation.pdf")
