@@ -89,15 +89,15 @@ Modern high throughput sequencers can generate hundreds of millions of sequences
 
 ### FastQC
 
-::: {.panel-tabset .column-body-outset}
+::: {.panel-tabset .column-page-right}
 
 # Before Trimming
 
 FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.
 
-::: {#fig-pre-trim-qc}
+::: {#fig-pre-trim-qc .column-page-right}
 
-<iframe src="./Results/QC/multiqc_report.html"></iframe>
+<iframe src="./Results/QC/multiqc_report.html" width="1000px"></iframe>
 
 Pre Trim QC
 :::
@@ -106,9 +106,9 @@ Pre Trim QC
 
 The tool was run again after removal of low quality bases and adapter sequences.
 
-::: {#fig-pre-trim-qc}
+::: {#fig-pre-trim-qc .column-page-right}
 
-<iframe src="./Results/QC/multiqc_report_after_trim.html"></iframe>
+<iframe src="./Results/QC/multiqc_report_after_trim.html" width="1000px"></iframe>
 
 Post Trim QC
 :::
