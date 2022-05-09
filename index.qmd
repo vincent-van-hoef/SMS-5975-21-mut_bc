@@ -79,7 +79,7 @@ Analysis of the copy number alterations in the primary tumors was considered to 
 
 ## Tumor Mutational Burden
 
-To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding known cancer mutations but including synonymous mutations. There are several ways to define and filter the TMB. The filtering used here is described as well in the TMBLeR's manual.
+To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding known cancer mutations but including synonymous mutations. There are several ways to define and filter the TMB. The filtering used here is described as well in the TMBLeR's manual. The results of this analysis were correlated with the lymph node status.
 
 # Results
 
