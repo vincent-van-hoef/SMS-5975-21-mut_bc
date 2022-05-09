@@ -47,7 +47,7 @@ Contract:
 You can leave comments on this report by opening the sidebar on the very right of this page. After quickly signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick and easy. Just highlight the section you want to remark upon and write your comment. Leave it in the public group and I will be able to see it and update the text if necessary.
 :::
 
-205 samples are included in this study. [below table contains 207 entries, but 2 samples were not sequenced.]
+205 samples are included in this study. [The sample table contains 207 entries, but 2 samples were not sequenced.]{.aside} sample 11, 12 and 19 are corrupted and were removed because they cause the analysis pipeline to stop in error. Requested acces to the original files through Celemics.
 
 ```{r}
 meta <- box_read_csv("954256451682")
@@ -67,9 +67,9 @@ Somatic variant calling of all samples was performed by combining the results of
 
 Additionally, somatic calling for the distant and lymph node metastases was done in a more rigorous manner. For these samples, the matched primary tumor was used as a *pseudo* normal sample and variant calling was performed by Mutect2 only. A custom panel-of-normals was created from the primary tumors using the *CreateSomaticPanelOfNormals* command from GATK. The same germline resource was used as the one employed for the primary tumor analysis. Contamination was estimated and Mutect2 calls were filtered as per the appropriate [GATK workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035531132). Keep in mind that this protocol only detects variants that are a variant in the metastatic sample but not in the primary tumor. It does not tell us anything about the variants of the primary tumor in itself; if both primary and metasasis have the variant it is not withheld in this analysis.
 
-## Filtering
+## Variant Filtering for Plotting
 
-In addition to taking the intersect of the results of the three variant callers, variants which are present at a variant allele frequency (VAF) > 1% in the Genome Aggregation Database (gnomAD) were removed. Files with raw and filtered variant calls are provided witht his report. 
+In addition to taking the intersect of the results of the three variant callers, only variants which are present at a variant allele frequency (VAF) < 1% in the Genome Aggregation Database (gnomAD) OR absent from gnomAD OR present in the COSMIC database AND  with a gnomAD VAF < 1% were retained for plotting purposes.
 
 ## Copy Number Analysis
 
