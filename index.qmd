@@ -44,7 +44,7 @@ Contract:
 [150 hours]
 
 :::{.callout-note}
-If the visualization in this report do not work as expected, you might have to update or change your browser. Please let me know if any plots seem strange or absent.
+You can leave comments on this report by opening the sidebar on the very right of this page. After quickly signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick adn easy. Just highlight the section you want to remark upon and writh your comment. Leave it in the public group and I will be able to see and update the text if necessary.
 :::
 
 205 samples are included in this study. [below table contains 207 entries, but 2 samples were not sequenced.]
@@ -73,7 +73,7 @@ In addition to taking the intersect of the results of the three variant callers,
 
 ## Copy Number Analysis
 
-For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. It was designed for hybrid capture sequencing data, especially with medium-sized targeted gene panels without matching normal samples in mind (matched whole-exome data is of course supported). The primary tumors were used to create a *pseudo* normal coverage profile which is then compared to the metastatic sample. Keep in mind that this means that any copy number alteration is a change in the metastasis as compared to the primary tumor. It does not tell us anything about the status of the primary tumor in intself.
+For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. It was designed for hybrid capture sequencing data, especially with medium-sized targeted gene panels without matching normal samples in mind (matched whole-exome data is of course supported). The primary tumors were used to create a *pseudo* normal coverage profile which is then compared to the metastatic sample. Keep in mind that this means that any copy number alteration is a change in the metastasis as compared to the primary tumor. It does not tell us anything about the status of the primary tumor in itself.
 
 Analysis of the copy number alterations in the primary tumors was considered to be too unreliable without a matched normal sample.
 
