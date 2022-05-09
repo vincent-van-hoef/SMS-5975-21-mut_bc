@@ -44,7 +44,7 @@ Contract:
 [150 hours]
 
 :::{.callout-note}
-You can leave comments on this report by opening the sidebar on the very right of this page. After quickly signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick adn easy. Just highlight the section you want to remark upon and writh your comment. Leave it in the public group and I will be able to see and update the text if necessary.
+You can leave comments on this report by opening the sidebar on the very right of this page. After quickly signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick and easy. Just highlight the section you want to remark upon and write your comment. Leave it in the public group and I will be able to see it and update the text if necessary.
 :::
 
 205 samples are included in this study. [below table contains 207 entries, but 2 samples were not sequenced.]
