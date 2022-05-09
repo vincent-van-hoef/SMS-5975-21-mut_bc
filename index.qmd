@@ -18,10 +18,13 @@ format:
         include-before-body: ./assets/custom.html
 execute: 
   echo: false
+  warning: false
 ---
 
 ```{r}
 library(DT)
+library(boxr)
+box_auth()
 ```
 
 # Introduction
@@ -45,7 +48,7 @@ If the visualization in this report do not work as expected, you might have to u
 205 samples are included in this study. [below table contains 207 entries, but 2 samples were not sequenced.]
 
 ```{r}
-meta <- read.csv("./Results/Additional_info_tCelemics_20210819.csv", sep = ";")
+meta <- box_read_csv("954256451682")
 datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
@@ -115,7 +118,10 @@ Overall, the quality is sufficient to proceed with the analysis.
 
 The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
-![Average Coverage per target per sample](./Results/QC/coverage/Coverage_Plot.svg){#fig-coverage-plot}
+::: {#fig-coverage-plot}
+<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&view=list" style="width:100%; height:500px;"></iframe> 
+Coverage per Sample.
+:::
 
 Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.
 
