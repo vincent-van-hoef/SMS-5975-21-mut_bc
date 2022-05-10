@@ -89,19 +89,19 @@ Modern high throughput sequencers can generate hundreds of millions of sequences
 
 ### FastQC
 
-::: {.panel-tabset .column-page-right}
+::: {.panel-tabset}
 
 # Before Trimming
 
 FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.
 
-The full report can be downloaded [here](https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4).
+The full report can be downloaded [here](https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4) via the Download button in Box.
 
 # After Trimming
 
 The tool was run again after removal of low quality bases and adapter sequences.
 
-The full report can be downloaded [here](https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk).
+The full report can be downloaded [here](https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk) via the Download button in Box.
 
 :::
 
@@ -126,7 +126,7 @@ Here you can find the results of the variant calling analysis for the different 
 
 The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files.
 
-<iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
 
 
 ::: {.panel-tabset}
@@ -156,7 +156,7 @@ Co-occurrence of common mutations.
 
 ### Distant Metastases
 
-<iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
 
 ::: {.panel-tabset}
 
@@ -185,7 +185,7 @@ Co-occurrence of common mutations in Distant Tumors.
 
 ### Lymph Node Metastases
 
-<iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
 
 ::: {.panel-tabset}
 
