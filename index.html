@@ -97,7 +97,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">5/9/22</p>
+        <p class="date">5/10/22</p>
       </div>
     </div>
       
@@ -126,9 +126,18 @@ div.csl-indent {
   <li><a href="#fastqc" id="toc-fastqc" class="nav-link" data-scroll-target="#fastqc">FastQC</a></li>
   <li><a href="#coverage" id="toc-coverage" class="nav-link" data-scroll-target="#coverage">Coverage</a></li>
   </ul></li>
-  <li><a href="#variant-calling-1" id="toc-variant-calling-1" class="nav-link" data-scroll-target="#variant-calling-1">Variant Calling</a></li>
+  <li><a href="#variant-calling-1" id="toc-variant-calling-1" class="nav-link" data-scroll-target="#variant-calling-1">Variant Calling</a>
+  <ul class="collapse">
+  <li><a href="#primary-tumor" id="toc-primary-tumor" class="nav-link" data-scroll-target="#primary-tumor">Primary Tumor</a></li>
+  <li><a href="#distant-metastases" id="toc-distant-metastases" class="nav-link" data-scroll-target="#distant-metastases">Distant Metastases</a></li>
+  <li><a href="#lymph-node-metastases" id="toc-lymph-node-metastases" class="nav-link" data-scroll-target="#lymph-node-metastases">Lymph Node Metastases</a></li>
+  </ul></li>
   <li><a href="#tumor-mutational-burden-1" id="toc-tumor-mutational-burden-1" class="nav-link" data-scroll-target="#tumor-mutational-burden-1">Tumor Mutational Burden</a></li>
-  <li><a href="#copy-number-alteration" id="toc-copy-number-alteration" class="nav-link" data-scroll-target="#copy-number-alteration">Copy Number Alteration</a></li>
+  <li><a href="#copy-number-alteration" id="toc-copy-number-alteration" class="nav-link" data-scroll-target="#copy-number-alteration">Copy Number Alteration</a>
+  <ul class="collapse">
+  <li><a href="#distant-metastases-1" id="toc-distant-metastases-1" class="nav-link" data-scroll-target="#distant-metastases-1">Distant Metastases</a></li>
+  <li><a href="#lymph-node-metastases-1" id="toc-lymph-node-metastases-1" class="nav-link" data-scroll-target="#lymph-node-metastases-1">Lymph Node Metastases</a></li>
+  </ul></li>
   <li><a href="#er-mutations" id="toc-er-mutations" class="nav-link" data-scroll-target="#er-mutations">ER Mutations</a></li>
   <li><a href="#nanostring-data" id="toc-nanostring-data" class="nav-link" data-scroll-target="#nanostring-data">Nanostring data</a></li>
   <li><a href="#survival-data" id="toc-survival-data" class="nav-link" data-scroll-target="#survival-data">Survival Data</a></li>
@@ -179,8 +188,8 @@ Note
 <div class="page-columns page-full"><p>205 samples are included in this study.  sample 11, 12 and 19 are corrupted and were removed because they cause the analysis pipeline to stop in error. Requested acces to the original files through Celemics.</p><div class="no-row-height column-margin column-container"><span class="aside">The sample table contains 207 entries, but 2 samples were not sequenced.</span></div></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-9b0a6c04bfd2c833e466" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b0a6c04bfd2c833e466">{"x":{"filter":"none","extensions":["Buttons","Scroller"],"data":[[1,2,7,8,9,10,11,12,13,15,17,19,20,21,22,23,24,25,26,27,28,29,31,32,33,35,36,38,41,42,43,45,46,47,49,50,51,52,53,54,55,56,57,60,61,62,64,65,66,67,68,69,70,71,73,74,75,77,79,81,83,84,85,86,88,89,90,92,96,97,98,100,101,104,105,108,109,110,112,114,115,116,117,119,121,122,123,125,130,131,134,135,138,139,140,144,145,147,148,149,150,151,152,154,155,156,157,159,160,161,162,163,165,166,167,168,169,170,171,172,174,176,177,178,184,185,186,189,191,192,193,194,195,198,200,203,204,205,206,207,208,209,210,211,212,213,214,215,217,218,221,224,228,229,230,232,235,236,238,240,248,250,251,252,253,254,255,259,261,262,263,264,269,273,274,277,278,279,281,282,283,284,285,286,289,291,293,294,295,297,302,306,307,311,312,314,316,317,318,319,327,328,329,330,331,332,333],["L011","L012","L070","M224","L054","L050","L060","L060","L062","L044","L044","L078","L024","L030","L001","L001","L022","L022","L004","L079","L079","L003","L034","L028","L028","L025","L033","L040","L070","L064","L083","L040","L067","L034","M248","M248","M219","M210","M210","M237","M237","M203","M203","M209","M214","M214","M201","M216","M216","L038","L038","M229","M229","M252","M253","L003","L030","L002","L063","L012","L040","L067","M253","M250","M206","M206","M205","M221","M221","M235","M235","M241","M226","M205","M201","M263","M224","M242","M264","M212","M212","L012","L070","L025","L062","L004","L086","L011","L057","L057","M246","M242","L057","L062","L073","L079","L083","M264","L018","L078","L024","L065","L064","L056","L002","L009","L020","L028","L060","L026","L027","M244","L072","M263","M202","M202","M250","L072","L072","L016","L068","L068","L043","L054","M222","M226","L018","L086","L082","L082","L078","L065","L008","L077","L050","L043","M222","H411","H411","H401","H401","H404","H404","H413","H413","H413","H408","H408","H403","H403","H405","M202","M213","L053","M235","M243","L077","L082","L087","L077","L052","L036","M229","L059","H405","H406","H406","M222","M252","L056","L002","L004","H408","H407","M209","M213","M216","M219","M232","M236","M254","M256","M261","M240","M225","M241","M254","M254","M257","M256","M253","L010","L030","L036","L065","L010","L016","L024","M242","M255","L008","L008","L043","M246","M225","L053","M243"],["PT","PT","PT","PT","PT","PT","PT","LNM","LNM","PT","LNM","PT","PT","LNM","PT","LNM","LNM","PT","LNM","LNM","PT","LNM","LNM","PT","LNM","REC","REC","REC","REC","PT","PT","PT","PT","PT","PT","LNM","PT","PT","LNM","PT","LNM","PT","LNM","LNM","PT","LNM","PT","PT","LNM","PT","LNM","PT","LNM","PT","LNM","PT","PT","LNM","REC","LNM","LNM","LNM","PT","LNM","PT","LNM","PT","PT","REC","PT","LNM","PT","REC","REC","REC","PT","LNM","PT","PT","LNM","PT","REC","LNM","PT","PT","PT","PT","REC","PT","LNM","PT","LNM","REC","REC","REC","REC","REC","REC","LNM","LNM","LNM","PT","REC","PT","REC","REC","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","PT","PT","LNM","PT","PT","LNM","PT","LNM","LNM","PT","PT","LNM","PT","LNM","REC","LNM","REC","LNM","REC","REC","REC","PT","LNM","PT","LNM","PT","LNM","PT","LNM","REC","PT","LNM","PT","LNM","LNM","REC","REC","PT","REC","REC","REC","REC","REC","PT","REC","PT","REC","REC","PT","PT","LNM","PT","REC","LNM","PT","REC","REC","REC","PT","PT","REC","REC","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","REC","PT","REC","PT","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","LNM","LNM","PT","REC","PT"],["PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","DM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM","PT+DM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+DM+LNM","DM","DM","PT+DM+LNM","PT+DM+LNM","DM","DM","DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","DM","PT+DM","PT+DM+LNM","DM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM","DM","DM","PT+DM+LNM","PT+DM","DM","DM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM","PT+DM","PT+DM"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sample ID<\/th>\n      <th>Studiekod<\/th>\n      <th>Tumor location<\/th>\n      <th>Matched or not<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel"],"deferRender":true,"scrollY":200,"scroller":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2787c4fcc2b23549fc67" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2787c4fcc2b23549fc67">{"x":{"filter":"none","extensions":["Buttons","Scroller"],"data":[[1,2,7,8,9,10,11,12,13,15,17,19,20,21,22,23,24,25,26,27,28,29,31,32,33,35,36,38,41,42,43,45,46,47,49,50,51,52,53,54,55,56,57,60,61,62,64,65,66,67,68,69,70,71,73,74,75,77,79,81,83,84,85,86,88,89,90,92,96,97,98,100,101,104,105,108,109,110,112,114,115,116,117,119,121,122,123,125,130,131,134,135,138,139,140,144,145,147,148,149,150,151,152,154,155,156,157,159,160,161,162,163,165,166,167,168,169,170,171,172,174,176,177,178,184,185,186,189,191,192,193,194,195,198,200,203,204,205,206,207,208,209,210,211,212,213,214,215,217,218,221,224,228,229,230,232,235,236,238,240,248,250,251,252,253,254,255,259,261,262,263,264,269,273,274,277,278,279,281,282,283,284,285,286,289,291,293,294,295,297,302,306,307,311,312,314,316,317,318,319,327,328,329,330,331,332,333],["L011","L012","L070","M224","L054","L050","L060","L060","L062","L044","L044","L078","L024","L030","L001","L001","L022","L022","L004","L079","L079","L003","L034","L028","L028","L025","L033","L040","L070","L064","L083","L040","L067","L034","M248","M248","M219","M210","M210","M237","M237","M203","M203","M209","M214","M214","M201","M216","M216","L038","L038","M229","M229","M252","M253","L003","L030","L002","L063","L012","L040","L067","M253","M250","M206","M206","M205","M221","M221","M235","M235","M241","M226","M205","M201","M263","M224","M242","M264","M212","M212","L012","L070","L025","L062","L004","L086","L011","L057","L057","M246","M242","L057","L062","L073","L079","L083","M264","L018","L078","L024","L065","L064","L056","L002","L009","L020","L028","L060","L026","L027","M244","L072","M263","M202","M202","M250","L072","L072","L016","L068","L068","L043","L054","M222","M226","L018","L086","L082","L082","L078","L065","L008","L077","L050","L043","M222","H411","H411","H401","H401","H404","H404","H413","H413","H413","H408","H408","H403","H403","H405","M202","M213","L053","M235","M243","L077","L082","L087","L077","L052","L036","M229","L059","H405","H406","H406","M222","M252","L056","L002","L004","H408","H407","M209","M213","M216","M219","M232","M236","M254","M256","M261","M240","M225","M241","M254","M254","M257","M256","M253","L010","L030","L036","L065","L010","L016","L024","M242","M255","L008","L008","L043","M246","M225","L053","M243"],["PT","PT","PT","PT","PT","PT","PT","LNM","LNM","PT","LNM","PT","PT","LNM","PT","LNM","LNM","PT","LNM","LNM","PT","LNM","LNM","PT","LNM","REC","REC","REC","REC","PT","PT","PT","PT","PT","PT","LNM","PT","PT","LNM","PT","LNM","PT","LNM","LNM","PT","LNM","PT","PT","LNM","PT","LNM","PT","LNM","PT","LNM","PT","PT","LNM","REC","LNM","LNM","LNM","PT","LNM","PT","LNM","PT","PT","REC","PT","LNM","PT","REC","REC","REC","PT","LNM","PT","PT","LNM","PT","REC","LNM","PT","PT","PT","PT","REC","PT","LNM","PT","LNM","REC","REC","REC","REC","REC","REC","LNM","LNM","LNM","PT","REC","PT","REC","REC","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","PT","PT","LNM","PT","PT","LNM","PT","LNM","LNM","PT","PT","LNM","PT","LNM","REC","LNM","REC","LNM","REC","REC","REC","PT","LNM","PT","LNM","PT","LNM","PT","LNM","REC","PT","LNM","PT","LNM","LNM","REC","REC","PT","REC","REC","REC","REC","REC","PT","REC","PT","REC","REC","PT","PT","LNM","PT","REC","LNM","PT","REC","REC","REC","PT","PT","REC","REC","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","REC","PT","REC","PT","REC","REC","REC","REC","REC","REC","REC","REC","PT","LNM","LNM","LNM","PT","REC","PT"],["PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","DM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM","PT+DM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+DM+LNM","DM","DM","PT+DM+LNM","PT+DM+LNM","DM","DM","DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","DM","PT+DM","PT+DM+LNM","DM","PT+LNM","PT+LNM","PT+LNM","PT+DM+LNM","PT+DM","PT+LNM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","DM","PT+LNM","PT+DM","PT+DM+LNM","PT+DM","DM","DM","PT+DM+LNM","PT+DM","DM","DM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM","PT+DM+LNM","PT+DM","PT+DM","PT+DM+LNM","PT+DM+LNM","DM","PT+DM+LNM","PT+DM+LNM","PT+DM+LNM","PT+LNM","PT+DM","PT+DM","PT+DM"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sample ID<\/th>\n      <th>Studiekod<\/th>\n      <th>Tumor location<\/th>\n      <th>Matched or not<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel"],"deferRender":true,"scrollY":200,"scroller":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -225,23 +234,11 @@ Fancello, Laura, et al. <span>“<span>TMBleR</span>, a Bioinformatic Tool to Op
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.</p>
-<div id="fig-pre-trim-qc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<iframe src="./Results/QC/multiqc_report.html" width="1000px">
-</iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1: Pre Trim QC</figcaption><p></p>
-</figure>
-</div>
+<p>The full report can be downloaded <a href="https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4">here</a>.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>The tool was run again after removal of low quality bases and adapter sequences.</p>
-<div id="fig-pre-trim-qc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<iframe src="./Results/QC/multiqc_report_after_trim.html" width="1000px">
-</iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 2: Post Trim QC</figcaption><p></p>
-</figure>
-</div>
+<p>The full report can be downloaded <a href="https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk">here</a>.</p>
 </div>
 </div>
 </div>
@@ -249,207 +246,189 @@ Fancello, Laura, et al. <span>“<span>TMBleR</span>, a Bioinformatic Tool to Op
 </section>
 <section id="coverage" class="level3">
 <h3 class="anchored" data-anchor-id="coverage">Coverage</h3>
-<p>The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in <a href="#fig-coverage-plot">Figure&nbsp;3</a>.</p>
-<div id="fig-coverage-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&amp;view=list" style="width:100%; height:500px;">
-</iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 3: Coverage per Sample.</figcaption><p></p>
-</figure>
-</div>
+<p>The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in <strong>?@fig-coverage-plot</strong>.</p>
+<p>#::: {#fig-coverage-plot} #<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&amp;view=list" style="width:100%; height:500px;"></iframe> #Coverage per Sample. #:::</p>
 <p>Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.</p>
 </section>
 </section>
 <section id="variant-calling-1" class="level2">
 <h2 class="anchored" data-anchor-id="variant-calling-1">Variant Calling</h2>
 <p>Here you can find the results of the variant calling analysis for the different sample groups.</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Primary Tumor</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Distant Metastases</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Lymph Node Metastases</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<section id="primary-tumor" class="level3">
+<h3 class="anchored" data-anchor-id="primary-tumor">Primary Tumor</h3>
 <p>The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files.</p>
-<p><a href="/Results/all_samples_freebayes.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Freebayes only</button></a></p>
-<p><a href="./Results/all_samples_varscan.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - VarScan only</button></a></p>
-<p><a href="./Results/all_samples_mutect2.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Mutect2 only</button></a></p>
-<p><a href="./Results/all_samples/3_common_vcf.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Combined Variants</button></a></p>
+<iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Overview</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Oncoplot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Interaction</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div id="fig-pt-overview" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/m1ejgob67s22qah887w5uh8w81foa7jw?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 4: Overview of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1: Overview of Primary Tumor samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div id="fig-pt-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/lsxwmjnlb39a8r2lb63qb5nk1qnkjykh?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 5: Oncoplot of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 2: Oncoplot of Primary Tumor samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <div id="fig-pt-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/qlip1l5vhzabd0myuv43did8hy00l6w1?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 6: Co-occurrence of common mutations.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 3: Co-occurrence of common mutations.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p><a href="./Results/distant_tumor_mutect2.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Distant Tumor VCF Files - Mutect2 only</button></a></p>
+</section>
+<section id="distant-metastases" class="level3">
+<h3 class="anchored" data-anchor-id="distant-metastases">Distant Metastases</h3>
+<iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&amp;view=list" width="500" height="400" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Overview</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Oncoplot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Interaction</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div id="fig-dt-overview" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/4pmde9i58cupacftv4aq35l966a4y7wz?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 7: Overview of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 4: Overview of Distant Tumor samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div id="fig-dt-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/62pfkzlt6d6pvd2cyjz7xdcjmn5asflu?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 8: Oncoplot of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 5: Oncoplot of Distant Tumor samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <div id="fig-dt-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/5jb5kn70sk4gnhbleoqmla5psn0hrbrl?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 9: Co-occurrence of common mutations.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 6: Co-occurrence of common mutations in Distant Tumors.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<p><a href="./Results/lymph_node_tumor_mutect2.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Tumor VCF Files - Mutect2 only</button></a></p>
+</section>
+<section id="lymph-node-metastases" class="level3">
+<h3 class="anchored" data-anchor-id="lymph-node-metastases">Lymph Node Metastases</h3>
+<iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&amp;view=list" width="500" height="400" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Overview</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Oncoplot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Interaction</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div id="fig-lnm-overview" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/fpw76dl8889f6r7q3zqdghbs592h0mne?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 10: Overview of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 7: Overview of Lymph Node samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div id="fig-lnm-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/0wbvhg32r4gp27v4dfuu2wgk2wm1d27m?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 11: Oncoplot of Primary Tumor samples.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 8: Oncoplot of Lymph Node samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <div id="fig-lnm-oncoplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;">
+<iframe src="https://uppsala.app.box.com/embed/s/pqhul5us0o4vg4vq2pqle1rl5f1l79ey?sortColumn=date&amp;view=list" style="width:100%; height:700px;">
 </iframe>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 12: Co-occurrence of common mutations.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 9: Co-occurrence of common mutations in Lymph Node samples.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="tumor-mutational-burden-1" class="level2">
 <h2 class="anchored" data-anchor-id="tumor-mutational-burden-1">Tumor Mutational Burden</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-dd830d8d68984c5bb555" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dd830d8d68984c5bb555">{"x":{"filter":"none","extensions":["Buttons","Scroller"],"data":[[1,10,100,101,104,105,108,109,110,112,114,115,116,117,119,121,122,123,125,13,131,134,135,138,139,140,144,145,147,148,149,15,150,151,152,154,155,156,157,159,160,161,162,163,166,167,168,169,17,170,171,172,174,176,177,178,184,185,186,189,191,192,193,194,195,198,2,20,200,203,204,205,206,207,208,209,21,210,211,212,213,214,215,217,218,22,221,224,228,229,23,230,232,235,236,238,24,240,248,25,250,251,252,253,254,255,259,26,261,262,263,264,269,27,273,274,277,278,279,28,281,282,283,284,285,286,289,29,291,293,294,295,297,302,306,307,31,311,312,314,316,317,318,319,32,327,328,329,33,330,331,332,333,35,36,38,41,42,43,45,46,47,49,50,51,52,53,54,55,56,57,60,61,62,64,65,66,67,68,69,7,70,71,73,74,75,77,79,8,81,83,84,85,86,88,89,9,90,92,96,97,98],["vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts"],[1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452],[780,575,530,510,489,551,537,548,555,518,541,539,523,529,528,518,519,534,534,632,537,509,553,533,510,546,501,540,523,512,503,574,485,476,496,526,559,546,557,515,507,513,527,533,534,551,540,536,586,509,527,536,539,550,553,527,538,518,505,527,508,509,490,512,548,487,812,583,553,561,530,518,532,533,529,499,554,497,534,531,526,472,487,532,537,560,512,1633,550,522,562,562,505,488,511,525,504,489,537,511,523,511,511,518,552,540,533,524,538,534,558,527,501,660,551,531,544,529,545,1199,520,577,547,530,557,511,489,519,539,548,548,489,533,538,553,561,553,541,463,544,572,496,579,494,521,567,589,570,510,511,493,539,555,519,582,507,483,529,562,514,576,516,563,563,561,537,564,548,549,535,525,538,525,526,515,522,511,533,584,508,577,513,543,531,510,530,556,550,624,652,517,590,528,525,538,530,607,494,539,543,543,556],[606.32,446.97,411.99,396.44,380.12,428.31,417.43,425.98,431.42,402.66,420.54,418.98,406.54,411.21,410.43,402.66,403.44,415.1,415.1,491.27,417.43,395.66,429.86,414.32,396.44,424.42,389.44,419.76,406.54,397.99,391,446.19,377.01,370.01,385.56,408.88,434.53,424.42,432.97,400.33,394.11,398.77,409.65,414.32,415.1,428.31,419.76,416.65,455.52,395.66,409.65,416.65,418.98,427.53,429.86,409.65,418.2,402.66,392.55,409.65,394.88,395.66,380.89,397.99,425.98,378.56,631.19,453.18,429.86,436.08,411.99,402.66,413.54,414.32,411.21,387.89,430.64,386.33,415.1,412.76,408.88,366.9,378.56,413.54,417.43,435.31,397.99,1269.38,427.53,405.77,436.86,436.86,392.55,379.34,397.22,408.1,391.78,380.12,417.43,397.22,406.54,397.22,397.22,402.66,429.09,419.76,414.32,407.32,418.2,415.1,433.75,409.65,389.44,513.04,428.31,412.76,422.87,411.21,423.65,932.02,404.21,448.52,425.2,411.99,432.97,397.22,380.12,403.44,418.98,425.98,425.98,380.12,414.32,418.2,429.86,436.08,429.86,420.54,359.9,422.87,444.63,385.56,450.08,384,404.99,440.75,457.85,443.08,396.44,397.22,383.22,418.98,431.42,403.44,452.41,394.11,375.45,411.21,436.86,399.55,447.74,401.1,437.64,437.64,436.08,417.43,438.42,425.98,426.76,415.87,408.1,418.2,408.1,408.88,400.33,405.77,397.22,414.32,453.96,394.88,448.52,398.77,422.09,412.76,396.44,411.99,432.2,427.53,485.06,506.82,401.88,458.63,410.43,408.1,418.2,411.99,471.84,384,418.98,422.09,422.09,432.2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sample<\/th>\n      <th>Filter<\/th>\n      <th>Sequencing_Size<\/th>\n      <th>Tot_Number_Mutations<\/th>\n      <th>TMB_per_Mb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel"],"deferRender":true,"scrollY":200,"scroller":true,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7f4766a203d4b6c95bce" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7f4766a203d4b6c95bce">{"x":{"filter":"none","extensions":["Buttons","Scroller"],"data":[[1,10,100,101,104,105,108,109,110,112,114,115,116,117,119,121,122,123,125,13,131,134,135,138,139,140,144,145,147,148,149,15,150,151,152,154,155,156,157,159,160,161,162,163,166,167,168,169,17,170,171,172,174,176,177,178,184,185,186,189,191,192,193,194,195,198,2,20,200,203,204,205,206,207,208,209,21,210,211,212,213,214,215,217,218,22,221,224,228,229,23,230,232,235,236,238,24,240,248,25,250,251,252,253,254,255,259,26,261,262,263,264,269,27,273,274,277,278,279,28,281,282,283,284,285,286,289,29,291,293,294,295,297,302,306,307,31,311,312,314,316,317,318,319,32,327,328,329,33,330,331,332,333,35,36,38,41,42,43,45,46,47,49,50,51,52,53,54,55,56,57,60,61,62,64,65,66,67,68,69,7,70,71,73,74,75,77,79,8,81,83,84,85,86,88,89,9,90,92,96,97,98],["vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts","vaf=0NoCancerMuts"],[1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452,1.286452],[780,575,530,510,489,551,537,548,555,518,541,539,523,529,528,518,519,534,534,632,537,509,553,533,510,546,501,540,523,512,503,574,485,476,496,526,559,546,557,515,507,513,527,533,534,551,540,536,586,509,527,536,539,550,553,527,538,518,505,527,508,509,490,512,548,487,812,583,553,561,530,518,532,533,529,499,554,497,534,531,526,472,487,532,537,560,512,1633,550,522,562,562,505,488,511,525,504,489,537,511,523,511,511,518,552,540,533,524,538,534,558,527,501,660,551,531,544,529,545,1199,520,577,547,530,557,511,489,519,539,548,548,489,533,538,553,561,553,541,463,544,572,496,579,494,521,567,589,570,510,511,493,539,555,519,582,507,483,529,562,514,576,516,563,563,561,537,564,548,549,535,525,538,525,526,515,522,511,533,584,508,577,513,543,531,510,530,556,550,624,652,517,590,528,525,538,530,607,494,539,543,543,556],[606.32,446.97,411.99,396.44,380.12,428.31,417.43,425.98,431.42,402.66,420.54,418.98,406.54,411.21,410.43,402.66,403.44,415.1,415.1,491.27,417.43,395.66,429.86,414.32,396.44,424.42,389.44,419.76,406.54,397.99,391,446.19,377.01,370.01,385.56,408.88,434.53,424.42,432.97,400.33,394.11,398.77,409.65,414.32,415.1,428.31,419.76,416.65,455.52,395.66,409.65,416.65,418.98,427.53,429.86,409.65,418.2,402.66,392.55,409.65,394.88,395.66,380.89,397.99,425.98,378.56,631.19,453.18,429.86,436.08,411.99,402.66,413.54,414.32,411.21,387.89,430.64,386.33,415.1,412.76,408.88,366.9,378.56,413.54,417.43,435.31,397.99,1269.38,427.53,405.77,436.86,436.86,392.55,379.34,397.22,408.1,391.78,380.12,417.43,397.22,406.54,397.22,397.22,402.66,429.09,419.76,414.32,407.32,418.2,415.1,433.75,409.65,389.44,513.04,428.31,412.76,422.87,411.21,423.65,932.02,404.21,448.52,425.2,411.99,432.97,397.22,380.12,403.44,418.98,425.98,425.98,380.12,414.32,418.2,429.86,436.08,429.86,420.54,359.9,422.87,444.63,385.56,450.08,384,404.99,440.75,457.85,443.08,396.44,397.22,383.22,418.98,431.42,403.44,452.41,394.11,375.45,411.21,436.86,399.55,447.74,401.1,437.64,437.64,436.08,417.43,438.42,425.98,426.76,415.87,408.1,418.2,408.1,408.88,400.33,405.77,397.22,414.32,453.96,394.88,448.52,398.77,422.09,412.76,396.44,411.99,432.2,427.53,485.06,506.82,401.88,458.63,410.43,408.1,418.2,411.99,471.84,384,418.98,422.09,422.09,432.2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sample<\/th>\n      <th>Filter<\/th>\n      <th>Sequencing_Size<\/th>\n      <th>Tot_Number_Mutations<\/th>\n      <th>TMB_per_Mb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel"],"deferRender":true,"scrollY":200,"scroller":true,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="copy-number-alteration" class="level2">
 <h2 class="anchored" data-anchor-id="copy-number-alteration">Copy Number Alteration</h2>
 <p>Copy number alterations were estimated using the R package pureCN. In this analysis, metastases were compared to their matched primary tumor. It is important to keep in mind that therefore these results can be affected by the state of the primary tumor as well; e.g.&nbsp;an amplification in a lymph node tumor might indicate a deletion in the matched primary tumor rather than a genuine amplification.</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Distant Metastases</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Lymph Node Metastases</a></li></ul>
-<div class="tab-content">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<section id="distant-metastases-1" class="level3">
+<h3 class="anchored" data-anchor-id="distant-metastases-1">Distant Metastases</h3>
 <p>#<code>{r} #dmag &lt;- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";") #datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE)) #</code></p>
 <p>The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of <a href="https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf">the pureCN manual</a>.</p>
-<p><a href="https://uppsala.box.com/v/lymphnodecopynumberdata" download=""><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a></p>
+<iframe src="https://uppsala.app.box.com/embed/s/vfavpoydsc4814f7l0k5yemu1urvdx4c?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
 <div id="fig-cna-dm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Amplified</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Deleted</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<iframe src="https://uppsala.app.box.com/embed/s/dc43uc8id7czovj6t9p1x5ij83mo25en?sortColumn=date&amp;view=list" style="width:100%; height:600px;">
+</iframe>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<iframe src="https://uppsala.app.box.com/embed/s/o8zrd9gq2l9h2p7nzvzev0iykaa92083?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
+</div>
+</div>
+</div>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 10: Most Common Alterations in Distant Tumor versus Primary Tumor.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="lymph-node-metastases-1" class="level3">
+<h3 class="anchored" data-anchor-id="lymph-node-metastases-1">Lymph Node Metastases</h3>
+<p>#<code>{r} #dmag &lt;- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";") #datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE)) #</code></p>
+<p>The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of <a href="https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf">the pureCN manual</a>.</p>
+<iframe src="https://uppsala.app.box.com/embed/s/kkzcsx0nv9hdgz677mwe5jsd657h3fhw?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
+<div id="fig-cna-lnm" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Amplified</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Deleted</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<iframe src="https://uppsala.app.box.com/embed/s/mhtvwob97pico8qs3qnfbhco2tvhcync?sortColumn=date&amp;view=list" style="width:100%; height:600px;">
+<iframe src="https://uppsala.app.box.com/embed/s/n6340rxrl1lpmyifdn0he3uo9nxa1buy?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
 </iframe>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<iframe src="https://uppsala.app.box.com/embed/s/st2hydxh4wv1d3tvv5mmk6ua7ska1srm?sortColumn=date&amp;view=list" style="width:100%; height:600px;">
+<iframe src="https://uppsala.app.box.com/embed/s/o70p89hzu6p5dsvi1yrjsuln16408wne?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
 </iframe>
 </div>
 </div>
 </div>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 13: Most Common Alterations in Distant Tumor versus Primary Tumor.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 11: Most Common Alterations in Lymph Node Sample versus Primary Tumor.</figcaption><p></p>
 </figure>
 </div>
-<p>Here you can see the results per patient.</p>
-<p><iframe src="https://uppsala.app.box.com/embed/s/h3rs5sctm0c559yw8qyer235deh22yri?sortColumn=date&amp;view=list" style="width:100%; height:700px;"></iframe></p>
-</div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p>#<code>{r} #dmag &lt;- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";") #datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE)) #</code></p>
-<p>The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of <a href="https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf">the pureCN manual</a>.</p>
-<p><a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download=""><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases CNA data</button></a></p>
-<div class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><embed src="https://uppsala.box.com/shared/static/ae254i5k17w51xytf749lcsln4xwsq45.pdf" class="img-fluid"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Amplified</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><embed src="https://uppsala.box.com/shared/static/49l60nxzaey53yuescn3o96oydztfw6s.pdf" class="img-fluid"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Deleted</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 14: Most Common Alterations in Lymph Node Metastasis versus Primary Tumor.</figcaption><p></p>
-</figure>
-</div>
-<p>Here you can see the results per patient.</p>
-<p><iframe src="https://uppsala.app.box.com/embed/s/h3rs5sctm0c559yw8qyer235deh22yri?sortColumn=date&amp;view=list" style="width:100%; height:700px;"></iframe></p>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="er-mutations" class="level2">
 <h2 class="anchored" data-anchor-id="er-mutations">ER Mutations</h2>
@@ -459,7 +438,8 @@ Fancello, Laura, et al. <span>“<span>TMBleR</span>, a Bioinformatic Tool to Op
 </section>
 <section id="survival-data" class="level2">
 <h2 class="anchored" data-anchor-id="survival-data">Survival Data</h2>
-<p><iframe src="https://uppsala.app.box.com/embed/s/4vuofjoibbam64ycrbwn20h5agcirpc8?sortColumn=date&amp;view=list" style="width:100%; height:700px;"></iframe></p>
+<iframe src="https://uppsala.app.box.com/embed/s/avpbe9jm9u18tgy88yev1to54ak2bv2u?sortColumn=date&amp;view=list" width="800" height="550" frameborder="0" allowfullscreen="" webkitallowfullscreen="" msallowfullscreen="">
+</iframe>
 </section>
 </section>
 <section id="data-responsibility" class="level1">

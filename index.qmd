@@ -50,7 +50,7 @@ You can leave comments on this report by opening the sidebar on the very right o
 205 samples are included in this study. [The sample table contains 207 entries, but 2 samples were not sequenced.]{.aside} sample 11, 12 and 19 are corrupted and were removed because they cause the analysis pipeline to stop in error. Requested acces to the original files through Celemics.
 
 ```{r}
-meta <- box_read_csv("954256451682")
+meta <- box_read_csv("955662091441")
 datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
@@ -95,23 +95,13 @@ Modern high throughput sequencers can generate hundreds of millions of sequences
 
 FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.
 
-::: {#fig-pre-trim-qc .column-page-right}
-
-<iframe src="./Results/QC/multiqc_report.html" width="1000px"></iframe>
-
-Pre Trim QC
-:::
+The full report can be downloaded [here](https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4).
 
 # After Trimming
 
 The tool was run again after removal of low quality bases and adapter sequences.
 
-::: {#fig-pre-trim-qc .column-page-right}
-
-<iframe src="./Results/QC/multiqc_report_after_trim.html" width="1000px"></iframe>
-
-Post Trim QC
-:::
+The full report can be downloaded [here](https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk).
 
 :::
 
@@ -121,10 +111,10 @@ Overall, the quality is sufficient to proceed with the analysis.
 
 The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
-::: {#fig-coverage-plot}
-<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&view=list" style="width:100%; height:500px;"></iframe> 
-Coverage per Sample.
-:::
+#::: {#fig-coverage-plot}
+#<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&view=list" style="width:100%; height:500px;"></iframe> 
+#Coverage per Sample.
+#:::
 
 Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.
 
@@ -132,20 +122,11 @@ Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are k
 
 Here you can find the results of the variant calling analysis for the different sample groups.
 
-::: {.panel-tabset}
-
-# Primary Tumor
+### Primary Tumor
 
 The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files.
 
-<a href="/Results/all_samples_freebayes.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Freebayes only</button></a>
-
-<a href="./Results/all_samples_varscan.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - VarScan only</button></a>
-
-<a href="./Results/all_samples_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Mutect2 only</button></a>
-
-
-<a href="./Results/all_samples/3_common_vcf.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Primary Tumor VCF Files - Combined Variants</button></a>
+<iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 
 ::: {.panel-tabset}
@@ -153,82 +134,80 @@ The primary tumors have been called by three different variant callers and the i
 # Overview
 
 ::: {#fig-pt-overview}
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/m1ejgob67s22qah887w5uh8w81foa7jw?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe> 
 Overview of Primary Tumor samples.
 :::
 
 # Oncoplot
 
 ::: {#fig-pt-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/lsxwmjnlb39a8r2lb63qb5nk1qnkjykh?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
 Oncoplot of Primary Tumor samples.
 :::
 
 # Interaction
 
 ::: {#fig-pt-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/qlip1l5vhzabd0myuv43did8hy00l6w1?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
 Co-occurrence of common mutations.
 :::
 
 :::
 
-# Distant Metastases
+### Distant Metastases
 
-<a href="./Results/distant_tumor_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Distant Tumor VCF Files - Mutect2 only</button></a>
+<iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {.panel-tabset}
 
 # Overview
 
 ::: {#fig-dt-overview}
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Overview of Primary Tumor samples.
+<iframe src="https://uppsala.app.box.com/embed/s/4pmde9i58cupacftv4aq35l966a4y7wz?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Overview of Distant Tumor samples.
 :::
 
 # Oncoplot
 
 ::: {#fig-dt-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Oncoplot of Primary Tumor samples.
+<iframe src="https://uppsala.app.box.com/embed/s/62pfkzlt6d6pvd2cyjz7xdcjmn5asflu?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Oncoplot of Distant Tumor samples.
 :::
 
 # Interaction
 
 ::: {#fig-dt-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Co-occurrence of common mutations.
+<iframe src="https://uppsala.app.box.com/embed/s/5jb5kn70sk4gnhbleoqmla5psn0hrbrl?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Co-occurrence of common mutations in Distant Tumors.
 :::
 
 :::
 
-# Lymph Node Metastases
+### Lymph Node Metastases
 
-<a href="./Results/lymph_node_tumor_mutect2.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Tumor VCF Files - Mutect2 only</button></a>
+<iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {.panel-tabset}
 
 # Overview
 
 ::: {#fig-lnm-overview}
-<iframe src="./Results/all_samples/merged/3_common/Primary_Tumor_Summary_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Overview of Primary Tumor samples.
+<iframe src="https://uppsala.app.box.com/embed/s/fpw76dl8889f6r7q3zqdghbs592h0mne?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Overview of Lymph Node samples.
 :::
 
 # Oncoplot
 
 ::: {#fig-lnm-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Oncoplot of Primary Tumor samples.
+<iframe src="https://uppsala.app.box.com/embed/s/0wbvhg32r4gp27v4dfuu2wgk2wm1d27m?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Oncoplot of Lymph Node samples.
 :::
 
 # Interaction
 
 ::: {#fig-lnm-oncoplot}
-<iframe src="./Results/all_samples/merged/3_common/oncoplots/Distant_Tumor_Oncoplot_3_common.pdf" style="width:100%; height:700px;"></iframe>
-Co-occurrence of common mutations.
-:::
-
+<iframe src="https://uppsala.app.box.com/embed/s/pqhul5us0o4vg4vq2pqle1rl5f1l79ey?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
+Co-occurrence of common mutations in Lymph Node samples.
 :::
 
 :::
@@ -236,7 +215,7 @@ Co-occurrence of common mutations.
 ## Tumor Mutational Burden
 
 ```{r}
-tmb <- read.csv("./Results/tmb/TMB_Result_table.csv", sep = ",")
+tmb <- box_read_csv("955667979176")
 tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
 datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
 ```
@@ -245,9 +224,7 @@ datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options 
 
 Copy number alterations were estimated using the R package pureCN. In this analysis, metastases were compared to their matched primary tumor. It is important to keep in mind that therefore these results can be affected by the state of the primary tumor as well; e.g. an amplification in a lymph node tumor might indicate a deletion in the matched primary tumor rather than a genuine amplification.
 
-::: {.panel-tabset}
-
-# Distant Metastases
+### Distant Metastases
 
 #```{r}
 #dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
@@ -256,25 +233,20 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="https://uppsala.box.com/v/lymphnodecopynumberdata" download><button class="btn"><i class="fa fa-download"></i> Download Distant Metastases CNA data</button></a>
+<iframe src="https://uppsala.app.box.com/embed/s/vfavpoydsc4814f7l0k5yemu1urvdx4c?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {#fig-cna-dm height="800px"}
 
 ::: {.panel-tabset}
 # Amplified
-<iframe src="https://uppsala.app.box.com/embed/s/mhtvwob97pico8qs3qnfbhco2tvhcync?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/dc43uc8id7czovj6t9p1x5ij83mo25en?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
 # Deleted
-<iframe src="https://uppsala.app.box.com/embed/s/st2hydxh4wv1d3tvv5mmk6ua7ska1srm?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/o8zrd9gq2l9h2p7nzvzev0iykaa92083?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 :::
 Most Common Alterations in Distant Tumor versus Primary Tumor.
 :::
 
-Here you can see the results per patient.
-
-  <iframe src="https://uppsala.app.box.com/embed/s/h3rs5sctm0c559yw8qyer235deh22yri?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe> 
-
-
-# Lymph Node Metastases
+### Lymph Node Metastases
 
 #```{r}
 #dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
@@ -283,22 +255,17 @@ Here you can see the results per patient.
 
 The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
-<a href="./Results/lymph_node_tumor_copy_number_data.tar.gz" download><button class="btn"><i class="fa fa-download"></i> Download Lymph Node Metastases CNA data</button></a>
+<iframe src="https://uppsala.app.box.com/embed/s/kkzcsx0nv9hdgz677mwe5jsd657h3fhw?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
-::: {#fig-cna-lnm layout-ncol=2}
+::: {#fig-cna-lnm height="800px"}
 
-![Amplified](https://uppsala.box.com/shared/static/ae254i5k17w51xytf749lcsln4xwsq45.pdf)
-
-![Deleted](https://uppsala.box.com/shared/static/49l60nxzaey53yuescn3o96oydztfw6s.pdf)
-
-Most Common Alterations in Lymph Node Metastasis versus Primary Tumor.
+::: {.panel-tabset}
+# Amplified
+<iframe src="https://uppsala.app.box.com/embed/s/n6340rxrl1lpmyifdn0he3uo9nxa1buy?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+# Deleted
+<iframe src="https://uppsala.app.box.com/embed/s/o70p89hzu6p5dsvi1yrjsuln16408wne?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 :::
-
-
-Here you can see the results per patient.
-
-  <iframe src="https://uppsala.app.box.com/embed/s/h3rs5sctm0c559yw8qyer235deh22yri?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-
+Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 :::
 
 ## ER Mutations
@@ -307,7 +274,7 @@ Here you can see the results per patient.
 
 ## Survival Data
 
-  <iframe src="https://uppsala.app.box.com/embed/s/4vuofjoibbam64ycrbwn20h5agcirpc8?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe> 
+<iframe src="https://uppsala.app.box.com/embed/s/avpbe9jm9u18tgy88yev1to54ak2bv2u?sortColumn=date&view=list" width="800" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 # Data Responsibility
 
