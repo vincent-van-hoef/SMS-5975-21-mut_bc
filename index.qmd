@@ -133,21 +133,15 @@ The primary tumors have been called by three different variant callers and the i
 
 # Overview
 
-![Overview of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/Distant_Tumor_Summary_3_common.svg){#fig-pt-overview width="100%" height="700px"}
+![Overview of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/Distant_Tumor_Summary_3_common.svg){#fig-pt-overview width="100%" height="650px"}
 
 # Oncoplot
 
-::: {#fig-pt-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/lsxwmjnlb39a8r2lb63qb5nk1qnkjykh?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Oncoplot of Primary Tumor samples.
-:::
+![Oncoplot of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/oncoplots/Primary_Tumor_Oncoplot_3_common.svg){#fig-pt-oncoplot width="100%" height="650px"}
 
 # Interaction
 
-::: {#fig-pt-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/qlip1l5vhzabd0myuv43did8hy00l6w1?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Co-occurrence of common mutations.
-:::
+![Co-ocurrence of common mutations in Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/interactions/Primary_Tumor_Interaction_3_common.svg){#fig-pt-int width="100%" height="650px"}
 
 :::
 
@@ -159,24 +153,15 @@ Co-occurrence of common mutations.
 
 # Overview
 
-::: {#fig-dt-overview}
-<iframe src="https://uppsala.app.box.com/embed/s/4pmde9i58cupacftv4aq35l966a4y7wz?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Overview of Distant Tumor samples.
-:::
+![Overview of Distant Tumor Samples](./Results/distance_tumor/maf/plots/Summary_distance_tumor.svg){#fig-dt-overview width="100%" height="650px"}
 
 # Oncoplot
 
-::: {#fig-dt-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/62pfkzlt6d6pvd2cyjz7xdcjmn5asflu?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Oncoplot of Distant Tumor samples.
-:::
+![Oncoplot of Distant Tumor Samples](./Results/distance_tumor/maf/plots/Oncoplot_distance_tumor.svg){#fig-dt-oncoplot width="100%" height="650px"}
 
 # Interaction
 
-::: {#fig-dt-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/5jb5kn70sk4gnhbleoqmla5psn0hrbrl?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Co-occurrence of common mutations in Distant Tumors.
-:::
+![Co-ocurrence of common mutations in Distant Tumor Samples](./Results/distance_tumor/maf/plots/Interaction_distance_tumor.svg){#fig-dt-int width="100%" height="650px"}
 
 :::
 
@@ -188,24 +173,15 @@ Co-occurrence of common mutations in Distant Tumors.
 
 # Overview
 
-::: {#fig-lnm-overview}
-<iframe src="https://uppsala.app.box.com/embed/s/fpw76dl8889f6r7q3zqdghbs592h0mne?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Overview of Lymph Node samples.
-:::
+![Overview of Lymph Node Samples](./Results/lymph_node/maf/plots/Summary_lymph_node.svg){#fig-ln-overview width="100%" height="650px"}
 
 # Oncoplot
 
-::: {#fig-lnm-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/0wbvhg32r4gp27v4dfuu2wgk2wm1d27m?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Oncoplot of Lymph Node samples.
-:::
+![Oncoplot of Lymph Node Samples](./Results/lymph_node/maf/plots/Oncoplot_lymph_node.svg){#fig-ln-oncoplot width="100%" height="650px"}
 
 # Interaction
 
-::: {#fig-lnm-oncoplot}
-<iframe src="https://uppsala.app.box.com/embed/s/pqhul5us0o4vg4vq2pqle1rl5f1l79ey?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe>
-Co-occurrence of common mutations in Lymph Node samples.
-:::
+![Co-ocurrence of common mutations in Lymph Node Samples](./Results/lymph_node/maf/plots/Interaction_lymph_node.svg){#fig-ln-int width="100%" height="650px"}
 
 :::
 
@@ -223,10 +199,10 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 ### Distant Metastases
 
-#```{r}
-#dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
-#datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
-#```
+```{r}
+dm_gene_no <- box_read_csv("956229121134")
+datatable(dm_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+```
 
 The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
@@ -235,20 +211,23 @@ The full results of the pureCN analysis per patient can be downloaded with the b
 ::: {#fig-cna-dm height="800px"}
 
 ::: {.panel-tabset}
+
 # Amplified
-<iframe src="https://uppsala.app.box.com/embed/s/dc43uc8id7czovj6t9p1x5ij83mo25en?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+![](./Results/CNA/distant_tumor/Amplified_in_distant_tumor_vs_primary_tumor.pdf){width="100%" height="700px"}
+
 # Deleted
-<iframe src="https://uppsala.app.box.com/embed/s/o8zrd9gq2l9h2p7nzvzev0iykaa92083?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+![](./Results/CNA/distant_tumor/Deleted_in_distant_tumor_vs_primary_tumor.pdf){width="100%" height="700px"})
+
 :::
 Most Common Alterations in Distant Tumor versus Primary Tumor.
 :::
 
 ### Lymph Node Metastases
 
-#```{r}
-#dmag <- read.csv("./Results/CNA/distant_tumor/all_genes_alt.csv", sep = ";")
-#datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
-#```
+```{r}
+ln_gene_no <- box_read_csv("956229079317") 
+datatable(ln_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+```
 
 The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
 
@@ -257,10 +236,13 @@ The full results of the pureCN analysis per patient can be downloaded here. Ther
 ::: {#fig-cna-lnm height="800px"}
 
 ::: {.panel-tabset}
+
 # Amplified
-<iframe src="https://uppsala.app.box.com/embed/s/n6340rxrl1lpmyifdn0he3uo9nxa1buy?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+![](./Results/CNA/lymph_node/Amplified_in_lymph_node_vs_primary_tumor.pdf){width="100%" height="700px"}
+
 # Deleted
-<iframe src="https://uppsala.app.box.com/embed/s/o70p89hzu6p5dsvi1yrjsuln16408wne?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+![](./Results/CNA/lymph_node/Deleted_in_lymph_node_vs_primary_tumor.pdf){width="100%" height="700px"})
+
 :::
 Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 :::
