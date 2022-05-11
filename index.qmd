@@ -133,10 +133,7 @@ The primary tumors have been called by three different variant callers and the i
 
 # Overview
 
-::: {#fig-pt-overview}
-<iframe src="https://uppsala.app.box.com/embed/s/m1ejgob67s22qah887w5uh8w81foa7jw?sortColumn=date&view=list" style="width:100%; height:700px;"></iframe> 
-Overview of Primary Tumor samples.
-:::
+![Overview of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/Distant_Tumor_Summary_3_common.svg){#fig-pt-overview width="100%" height="700px"}
 
 # Oncoplot
 
