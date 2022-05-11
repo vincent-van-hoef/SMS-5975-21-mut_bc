@@ -253,7 +253,101 @@ Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 
 ## Survival Data
 
-<iframe src="https://uppsala.app.box.com/embed/s/avpbe9jm9u18tgy88yev1to54ak2bv2u?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+An attempt was made to link the mutation data can be linked to the survival data. For this, samples are divided in two groups: samples with a mutation for a certain gene and another group of samples that are WT for the gene. The endpoint is Overall Survival.
+
+::: {.panel-tabset}
+
+### Primary Tumor
+
+These are the results for the survival analysis within primary tumors only.
+
+```{r}
+pt_surv <- box_read_csv("956229079317") 
+datatable(pt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+```
+
+And as KM-curve below
+
+```{r}
+fl <- list.files(path = "./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/", pattern = "_survival_curve_PT_3_common.svg")
+fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
+ojs_define(plots_surv_pt = fl)
+```
+
+
+```{ojs}
+viewof genes_surv_pt = Inputs.select(plots_surv_pt, { label: "Choose Gene" })
+html`<p></p>`
+```
+
+
+```{ojs}
+//| label: fig-pt-surv
+//| fig-cap: "Survival Plots Primary Tumor"
+html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_pt}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
+```
+
+### Distant Tumor
+
+These are the results for the survival analysis within distant tumors only.
+
+```{r}
+dt_surv <- box_read_csv("956229079317") 
+datatable(dt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+```
+
+And as KM-curve below
+
+```{r}
+fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
+fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
+ojs_define(plots_surv_dt = fl)
+```
+
+
+```{ojs}
+viewof genes_surv_dt = Inputs.select(plots_surv_dt, { label: "Choose Gene" })
+html`<p></p>`
+```
+
+
+```{ojs}
+//| label: fig-dt-surv
+//| fig-cap: "Survival Plots Distant Tumor"
+html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_dt}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
+```
+
+### Lymph Node
+
+These are the results for the survival analysis within lymph node samples only.
+
+```{r}
+ln_surv <- box_read_csv("956229079317") 
+datatable(ln_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+```
+
+And as KM-curve below
+
+```{r}
+fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
+fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
+ojs_define(plots_surv_ln = fl)
+```
+
+
+```{ojs}
+viewof genes_surv_ln = Inputs.select(plots_surv_ln, { label: "Choose Gene" })
+html`<p></p>`
+```
+
+
+```{ojs}
+//| label: fig-ln-surv
+//| fig-cap: "Survival Plots Lymph Node"
+html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_ln}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
+```
+
+:::
 
 # Data Responsibility
 
