@@ -234,7 +234,7 @@ datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options 
 
 TMB does not seem to differ significantly between the different tumor locations, see @fig-tmb-loc.
 
-![TMB in the different tumor locations.](./Results/tmb/Tumor_Location_vs_TMB.svg))#fig-tmb-loc width="100%" height="650px"}
+![TMB in the different tumor locations.](./Results/tmb/Tumor_Location_vs_TMB.svg){#fig-tmb-loc width="100%" height="650px"}
 
 ### Correlation with Lymph Node status
 
