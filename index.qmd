@@ -29,9 +29,18 @@ library(boxr)
 box_auth()
 ```
 
+:::{.callout-note collapse="true"}
+## Click here to see the version and updates of this report
+
+Here you can see the status of the report. This will be updated as sections are added or improved.
+
+- Version 1: Most results included, but sections on nanostring correlation and ESR1 mutation remain to be added.
+
+:::
+
 # Introduction
 
-This is the report of the analysis for project #5975, requested by Lisa Rydén (LU). For this study, targeted next generation sequencing by hybridization capture was performed to get data about a panel of approx 450 genes. The main aim of the analysis is to call somatic variants in a collection of 205 breast cancer samples; some of which are matched pairs of primary tumors and distance metastases or primary tumors and lymph node metastases. Matched normal samples are however not available but might be included later for more accurate results. 
+This is the report of the analysis for project #5975, requested by Lisa Rydén (LU). For this study, targeted next generation sequencing by hybridization capture was performed to get data about a panel of 442 genes. The main aim of the analysis is to call somatic variants in a collection of 205 breast cancer samples; some of which are matched pairs of primary tumors and distance metastases or primary tumors and lymph node metastases. Matched normal samples are however not available but might be included later for more accurate results. 
 
 Contract:
 
@@ -44,18 +53,21 @@ Contract:
 [150 hours]
 
 :::{.callout-note}
-You can leave comments on this report by opening the sidebar on the very right of this page. After quickly signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick and easy. Just highlight the section you want to remark upon and write your comment. Leave it in the public group ("Post to Public") and I will be able to see it and update the text if necessary.
+Please let me know if any of the visualizations or links seem to be erratic. We recently changed reporting tool and small issues might still be present.
+
+You can leave comments on this report by opening the sidebar on the very right of this page. After signing up for Hypothes.is via the link at the top of the sidebar, commenting is quick and easy. Just highlight the section you want to remark upon and write your comment. Leave it in the public group ("Post to Public") and I will be able to see it and update the text if necessary.
 :::
 
-205 samples are included in this study. [The sample table contains 207 entries, but 2 samples were not sequenced.]{.aside} sample 11, 12 and 19 are corrupted and were removed because they cause the analysis pipeline to stop in error. Requested acces to the original files through Celemics but so far they have not sent over the intact files.
+205 samples are included in this study. [The sample table contains 207 entries, but 2 samples were not sequenced.]{.aside} Sample 11, 12 and 19 seem corrupted and were removed because they cause the analysis pipeline to stop in error. I requested acces to the original files through Celemics but the files they send over are the exact same ones as the ones we have. Probably the actual sequencing facility will have to be contacted to get these samples from an earlier timepoint.
 
 ```{r}
 meta <- box_read_csv("955662091441")
 datatable(meta, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
-
 # Material and Methods
+
+This is a description of the methods used in this analysis. For a potential later manuscript M&M section, you can always contact NBIS for an up-to-date description of what ended up in the final manuscript, even after closing the project.
 
 ## Preprocessing
 
@@ -69,13 +81,15 @@ Additionally, somatic calling for the distant and lymph node metastases was done
 
 ## Variant Filtering for Plotting
 
-In addition to taking the intersect of the results of the three variant callers, only variants which are present at a variant allele frequency (VAF) < 1% in the Genome Aggregation Database (gnomAD) OR absent from gnomAD OR present in the COSMIC database AND  with a gnomAD VAF < 1% were retained for plotting purposes.
+In addition to taking the intersect of the results of the three variant callers, only variants which are present at a variant allele frequency (VAF) < 1% in the Genome Aggregation Database (gnomAD) OR absent from gnomAD OR present in the COSMIC database AND with a gnomAD VAF < 1% were retained for plotting purposes. For plotting purposes, the R package MAFTools was used.
 
 ## Copy Number Analysis
 
-For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. It was designed for hybrid capture sequencing data, especially with medium-sized targeted gene panels without matching normal samples in mind (matched whole-exome data is of course supported). The primary tumors were used to create a *pseudo* normal coverage profile which is then compared to the metastatic sample. Keep in mind that this means that any copy number alteration is a change in the metastasis as compared to the primary tumor. It does not tell us anything about the status of the primary tumor in itself.
+For a rough estimation of the copy number alterations in the metastases, the R package pureCN was used [@riester_purecn:_2016]. It was designed for hybrid capture sequencing data, especially with medium-sized targeted gene panels without matching normal samples (matched whole-exome data is of course supported). The primary tumors were used to create a *pseudo* normal coverage profile which is then compared to the metastatic sample. Keep in mind that this means that any copy number alteration is a change in the metastasis as compared to the primary tumor. It does not tell us anything about the status of the primary tumor in itself.
 
+:::{.callout-note}
 Analysis of the copy number alterations in the primary tumors was considered to be too unreliable without a matched normal sample.
+:::
 
 ## Tumor Mutational Burden
 
@@ -83,9 +97,9 @@ To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The
 
 # Results
 
-Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}. Three samples are corrupted and were removed (11,12 and 19).
-
 ## Quality control 
+
+Modern high throughput sequencers can generate hundreds of millions of sequences in a single run. Before analysing this sequences to draw biological conclusions you should always perform some simple quality control checks to ensure that the raw data looks good and there are no problems or biases in your data which may affect how you can usefully use it. Therefore, a quality control step was run on the raw reads before and after trimming by the tool [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){target="_blank"}. Three samples are corrupted and were removed (11,12 and 19).
 
 ### FastQC
 
@@ -93,23 +107,23 @@ Modern high throughput sequencers can generate hundreds of millions of sequences
 
 # Before Trimming
 
-FastQC was run on the raw sequences as they are delivered by the sequencing facility. Read1 and Read2 are considered separately. Here we mainly look for outlier samples.
+FastQC was run on the raw sequences as they are delivered by the sequencing facility so before the removal of adapter sequences and low quality bases. Read1 and Read2 are considered separately. Here we mainly look for outlier samples. Each plot has a "Help" buttong ginving some more info of the different quality assessments.
 
-The full report can be downloaded [here](https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4) via the Download button in Box.
+The full report can be downloaded [here](https://uppsala.box.com/s/hqc0smh7zhxs72pfq8syzchdotl7szv4) via the Download button in Box and visualized in any browser.
 
 # After Trimming
 
 The tool was run again after removal of low quality bases and adapter sequences.
 
-The full report can be downloaded [here](https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk) via the Download button in Box.
+The full report can be downloaded [here](https://uppsala.box.com/s/6m3aayzwcopwsiefi7cmu0nejbcfcdkk) via the Download button in Box and visualized in any browser.
 
 :::
 
-Overall, the quality is sufficient to proceed with the analysis.
+Overall, the quality of the samples and sequencing is sufficient to proceed with the downstream analysis.
 
 ### Coverage
 
-The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
+The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones and tumor heterogeneity. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
 #::: {#fig-coverage-plot}
 #<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&view=list" style="width:100%; height:500px;"></iframe> 
@@ -124,22 +138,27 @@ Here you can find the results of the variant calling analysis for the different 
 
 ### Primary Tumor
 
-The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files.
+The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files. In the Box window below you can see the VCF files for each of the three variant callers as well as the merged dataset. VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary. 
 
 <iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
-
 
 ::: {.panel-tabset}
 
 # Overview
 
+Here you see a general overview of the variants in the Primary Tumor samples. It gives highlights the type and number of variants in the dataset as well as indicating the most commonly affected genes.
+
 ![Overview of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/Distant_Tumor_Summary_3_common.svg){#fig-pt-overview width="100%" height="650px"}
 
 # Oncoplot
 
+An oncoplot gives more info on the 25 most commonly mutated genes. The PAM50 type of each sample is indicated by the bar at the bottom of the plot.
+
 ![Oncoplot of Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/oncoplots/Primary_Tumor_Oncoplot_3_common.svg){#fig-pt-oncoplot width="100%" height="650px"}
 
 # Interaction
+
+This plot will give you an indication whether the 25 most commonly mutated genes often occur in the same sample or if on the other hand they are mutually exclusive.
 
 ![Co-ocurrence of common mutations in Primary Tumor Samples](./Results/variant_calls_all/merged_calls/Plots/3_common/interactions/Primary_Tumor_Interaction_3_common.svg){#fig-pt-int width="100%" height="650px"}
 
@@ -147,19 +166,27 @@ The primary tumors have been called by three different variant callers and the i
 
 ### Distant Metastases
 
+The distant tumors have been called by Mutect2. In the Box window below you can see the VCF files obtained from the Mutect2 analysis (both raw and passing a quality filter). VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary.
+
 <iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
 
 ::: {.panel-tabset}
 
 # Overview
 
+Here you see a general overview of the variants in the Distant Tumor samples. It highlights the type and number of variants in the dataset as well as indicating the most commonly affected genes.
+
 ![Overview of Distant Tumor Samples](./Results/distance_tumor/maf/plots/Summary_distance_tumor.svg){#fig-dt-overview width="100%" height="650px"}
 
 # Oncoplot
 
+An oncoplot gives more info on the 25 most commonly mutated genes. The PAM50 type of each sample is indicated by the bar at the bottom of the plot.
+
 ![Oncoplot of Distant Tumor Samples](./Results/distance_tumor/maf/plots/Oncoplot_distance_tumor.svg){#fig-dt-oncoplot width="100%" height="650px"}
 
 # Interaction
+
+This plot will give you an indication whether the 25 most commonly mutated genes often occur in the same sample or if on the other hand they are mutually exclusive.
 
 ![Co-ocurrence of common mutations in Distant Tumor Samples](./Results/distance_tumor/maf/plots/Interaction_distance_tumor.svg){#fig-dt-int width="100%" height="650px"}
 
@@ -167,19 +194,27 @@ The primary tumors have been called by three different variant callers and the i
 
 ### Lymph Node Metastases
 
+The lymph node samples have been called by Mutect2. In the Box window below you can see the VCF files obtained from the Mutect2 analysis (both raw and passing a quality filter). VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary.
+
 <iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
 
 ::: {.panel-tabset}
 
 # Overview
 
+Here you see a general overview of the variants in the Lymph Node samples. It highlights the type and number of variants in the dataset as well as indicating the most commonly affected genes.
+
 ![Overview of Lymph Node Samples](./Results/lymph_node/maf/plots/Summary_lymph_node.svg){#fig-ln-overview width="100%" height="650px"}
 
 # Oncoplot
 
+An oncoplot gives more info on the 25 most commonly mutated genes. The PAM50 type of each sample is indicated by the bar at the bottom of the plot.
+
 ![Oncoplot of Lymph Node Samples](./Results/lymph_node/maf/plots/Oncoplot_lymph_node.svg){#fig-ln-oncoplot width="100%" height="650px"}
 
 # Interaction
+
+This plot will give you an indication whether the 25 most commonly mutated genes often occur in the same sample or if on the other hand they are mutually exclusive.
 
 ![Co-ocurrence of common mutations in Lymph Node Samples](./Results/lymph_node/maf/plots/Interaction_lymph_node.svg){#fig-ln-int width="100%" height="650px"}
 
@@ -187,11 +222,25 @@ The primary tumors have been called by three different variant callers and the i
 
 ## Tumor Mutational Burden
 
+The tumor mutational burden metric gives a general and rough indication of the amount of mutation in a specific tumor. It is defined as the number of mutations per Mb. The filtering strategy will influence this metric quite strongly but ther eis no consensus on a specific strategy. Here synonymous mutations have been kept, while cancer speific mutations have been filtered out, as is described in the software manual.
+
 ```{r}
 tmb <- box_read_csv("955667979176")
 tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
 datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
 ```
+
+### Correlation with tumor location
+
+TMB does not seem to differ significantly between the different tumor locations, see @fig-tmb-loc.
+
+![TMB in the different tumor locations.](./Results/tmb/Tumor_Location_vs_TMB.svg))#fig-tmb-loc width="100%" height="650px"}
+
+### Correlation with Lymph Node status
+
+TMB does not seem to differ significantly between the lymph node status, see @fig-tmb-ln-stat.
+
+![TMB according to Lymph Node status](./Results/tmb/Node_Status_vs_TMB.svg){#fig-tmb-ln-stat width="100%" height="650px"}
 
 ## Copy Number Alteration
 
@@ -199,14 +248,22 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 
 ### Distant Metastases
 
+In below table you see an overview of the alteration in a specific gene and sample. You can look for specific genes by using the search field.
+
 ```{r}
 dm_gene_no <- box_read_csv("956229121134")
 datatable(dm_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
 ```
 
-The full results of the pureCN analysis per patient can be downloaded with the button below. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+The full results of the pureCN analysis per patient can be downloaded in the window below. There are several files per patient here even though not all are equally informative. The most useful data is probably:
+
+* The per gene statistics for each sample can for example be found in the per_genes folder. A description of the columns in these files can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+* The alteration per chromosome and patient can be found in the chromosomes folder
+* General info per sample can be found in the overview folder.
 
 <iframe src="https://uppsala.app.box.com/embed/s/vfavpoydsc4814f7l0k5yemu1urvdx4c?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+
+The 15 most commonly amplified or deleted genes are visualized in @fig-cna-dm.
 
 ::: {#fig-cna-dm height="800px"}
 
@@ -224,14 +281,22 @@ Most Common Alterations in Distant Tumor versus Primary Tumor.
 
 ### Lymph Node Metastases
 
+In below table you see an overview of the alteration in a specific gene and sample. You can look for specific genes by using the search field.
+
 ```{r}
 ln_gene_no <- box_read_csv("956229079317") 
 datatable(ln_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
 ```
 
-The full results of the pureCN analysis per patient can be downloaded here. There are several files per patient here and not all are even informative. The per gene statistics for each sample can for example be found in the *_genes.csv files. A description of the columns in this genes.csv file can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+The full results of the pureCN analysis per patient can be downloaded in the window below. There are several files per patient here even though not all are equally informative. The most useful data is probably:
+
+* The per gene statistics for each sample can for example be found in the per_genes folder. A description of the columns in these files can be found in Table 2 of [the pureCN manual](https://bioconductor.org/packages/release/bioc/vignettes/PureCN/inst/doc/PureCN.pdf).
+* The alteration per chromosome and patient can be found in the chromosomes folder
+* General info per sample can be found in the overview folder.
 
 <iframe src="https://uppsala.app.box.com/embed/s/kkzcsx0nv9hdgz677mwe5jsd657h3fhw?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+
+The 15 most commonly amplified or deleted genes are visualized in @fig-cna-lnm.
 
 ::: {#fig-cna-lnm height="800px"}
 
@@ -249,15 +314,18 @@ Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 
 ## ER Mutations
 
+TODO
+
 add ER mutation data...
 
 ## Nanostring data
 
-Link Nanostring data to lymph node status...
+TODO
+
 
 ## Survival Data
 
-An attempt was made to link the mutation data can be linked to the survival data. For this, samples are divided in two groups: samples with a mutation for a certain gene and another group of samples that are WT for the gene. The endpoint is Overall Survival.
+An attempt was made to link the mutation data to the survival data. For this, samples were divided in two groups: samples with a mutation for a certain gene and another group of samples that are WT for the gene. The endpoint is Overall Survival. This was done within each sample group (i.e. primary, recurrent or lymph node).
 
 ::: {.panel-tabset}
 
@@ -266,11 +334,11 @@ An attempt was made to link the mutation data can be linked to the survival data
 These are the results for the survival analysis within primary tumors only.
 
 ```{r}
-pt_surv <- box_read_csv("956229079317") 
-datatable(pt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+pt_surv <- box_read_csv("955734268821") 
+datatable(pt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
-And as KM-curve below
+Select a gene below to visualize the Kaplan-Meier plot.
 
 ```{r}
 fl <- list.files(path = "./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/", pattern = "_survival_curve_PT_3_common.svg")
@@ -278,12 +346,10 @@ fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
 ojs_define(plots_surv_pt = fl)
 ```
 
-
 ```{ojs}
 viewof genes_surv_pt = Inputs.select(plots_surv_pt, { label: "Choose Gene" })
 html`<p></p>`
 ```
-
 
 ```{ojs}
 //| label: fig-pt-surv
@@ -296,11 +362,11 @@ html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_
 These are the results for the survival analysis within distant tumors only.
 
 ```{r}
-dt_surv <- box_read_csv("956229079317") 
-datatable(dt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+dt_surv <- box_read_csv("955747088113") 
+datatable(dt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
-And as KM-curve below
+Select a gene below to visualize the Kaplan-Meier plot.
 
 ```{r}
 fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
@@ -308,12 +374,10 @@ fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
 ojs_define(plots_surv_dt = fl)
 ```
 
-
 ```{ojs}
 viewof genes_surv_dt = Inputs.select(plots_surv_dt, { label: "Choose Gene" })
 html`<p></p>`
 ```
-
 
 ```{ojs}
 //| label: fig-dt-surv
@@ -326,11 +390,11 @@ html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_
 These are the results for the survival analysis within lymph node samples only.
 
 ```{r}
-ln_surv <- box_read_csv("956229079317") 
-datatable(ln_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
+ln_surv <- box_read_csv("955741332486") 
+datatable(ln_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
-And as KM-curve below
+Select a gene below to visualize the Kaplan-Meier plot.
 
 ```{r}
 fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
@@ -338,12 +402,10 @@ fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
 ojs_define(plots_surv_ln = fl)
 ```
 
-
 ```{ojs}
 viewof genes_surv_ln = Inputs.select(plots_surv_ln, { label: "Choose Gene" })
 html`<p></p>`
 ```
-
 
 ```{ojs}
 //| label: fig-ln-surv
