@@ -125,10 +125,7 @@ Overall, the quality of the samples and sequencing is sufficient to proceed with
 
 The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones and tumor heterogeneity. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
-#::: {#fig-coverage-plot}
-#<iframe src="https://uppsala.app.box.com/embed/s/vidv6u2pfzxlr6rilt5w9evot29ywvcq?sortColumn=date&view=list" style="width:100%; height:500px;"></iframe> 
-#Coverage per Sample.
-#:::
+![Coverage per Sample Per Target](https://uppsala.box.com/shared/static/98qneihv5sxaowh83r6b5crpnuu9kplx.svg){#fig-coverage-plot width="100%" height="650px"}
 
 Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.
 
@@ -334,7 +331,7 @@ An attempt was made to link the mutation data to the survival data. For this, sa
 These are the results for the survival analysis within primary tumors only.
 
 ```{r}
-pt_surv <- box_read_csv("955734268821") 
+pt_surv <- box_read_csv("956836277408") 
 datatable(pt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
@@ -362,15 +359,15 @@ html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_
 These are the results for the survival analysis within distant tumors only.
 
 ```{r}
-dt_surv <- box_read_csv("955747088113") 
+dt_surv <- box_read_csv("956835681541") 
 datatable(dt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
 Select a gene below to visualize the Kaplan-Meier plot.
 
 ```{r}
-fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
-fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
+fl <- list.files(path = "./Results/distance_tumor/maf/plots/", pattern = "_survival_curve_distance_tumor.svg")
+fl <- as.list(gsub("_survival_curve_distance_tumor.svg", "", fl))
 ojs_define(plots_surv_dt = fl)
 ```
 
@@ -382,7 +379,7 @@ html`<p></p>`
 ```{ojs}
 //| label: fig-dt-surv
 //| fig-cap: "Survival Plots Distant Tumor"
-html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_dt}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
+html`<img src="./Results/distance_tumor/maf/plots/${genes_surv_dt}_survival_curve_distance_tumor.svg" width:100% height:600px></img>`
 ```
 
 ### Lymph Node
@@ -390,15 +387,15 @@ html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_
 These are the results for the survival analysis within lymph node samples only.
 
 ```{r}
-ln_surv <- box_read_csv("955741332486") 
+ln_surv <- box_read_csv("956833214195") 
 datatable(ln_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
 Select a gene below to visualize the Kaplan-Meier plot.
 
 ```{r}
-fl <- list.files(path = "", pattern = "_survival_curve_PT_3_common.svg")
-fl <- as.list(gsub("_survival_curve_PT_3_common.svg", "", fl))
+fl <- list.files(path = "./Results/lymph_node/maf/plots/", pattern = "_survival_curve_lymph_node.svg")
+fl <- as.list(gsub("_survival_curve_lymph_node.svg", "", fl))
 ojs_define(plots_surv_ln = fl)
 ```
 
@@ -410,7 +407,7 @@ html`<p></p>`
 ```{ojs}
 //| label: fig-ln-surv
 //| fig-cap: "Survival Plots Lymph Node"
-html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_ln}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
+html`<img src="./Results/lymph_node/maf/plots/${genes_surv_ln}_survival_curve_lymph_node.svg" width:100% height:600px></img>`
 ```
 
 :::

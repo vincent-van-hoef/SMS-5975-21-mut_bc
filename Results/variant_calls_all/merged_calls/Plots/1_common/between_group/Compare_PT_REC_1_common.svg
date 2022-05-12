@@ -343,7 +343,7 @@
   <path d="M 61 28.511719 L 63 28.511719 L 63 391.488281 L 61 391.488281 Z M 61 28.511719 "/>
 </clipPath>
 </defs>
-<g id="surface216">
+<g id="surface211">
 <rect x="0" y="0" width="504" height="504" style="fill:rgb(100%,100%,100%);fill-opacity:1;stroke:none;"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 97.367188 376.265625 C 97.367188 378.878906 93.445312 378.878906 93.445312 376.265625 C 93.445312 373.652344 97.367188 373.652344 97.367188 376.265625 "/>
 <path style="fill:none;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(25.490196%,41.176471%,88.235294%);stroke-opacity:1;stroke-miterlimit:10;" d="M 49.96875 376.265625 L 152.125 376.265625 "/>
