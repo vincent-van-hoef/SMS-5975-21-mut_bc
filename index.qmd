@@ -34,7 +34,8 @@ box_auth()
 
 Here you can see the status of the report. This will be updated as sections are added or improved.
 
-- Version 1: Most results included, but sections on nanostring correlation and ESR1 mutation remain to be added.
+- Version 1: [12/5/22] Most results included, but sections on nanostring correlation and ESR1 mutation remain to be added.
+- Version 1.1: [16/5/22] Update of TMB calculation; combinations of three variant callers and remove common variants + add paired plot
 
 :::
 
@@ -93,7 +94,7 @@ Analysis of the copy number alterations in the primary tumors was considered to 
 
 ## Tumor Mutational Burden
 
-To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding known cancer mutations but including synonymous mutations. There are several ways to define and filter the TMB. The filtering used here is described as well in the TMBLeR's manual. The results of this analysis were correlated with the lymph node status.
+To calculate the TMB, the R package TMBLeR was used [@fancello_tmbler_2021]. The TMB is defined here as the number of mutations per Mb, excluding common variants (>1% in gnomAD) but including synonymous mutations. There are several ways to define and filter the TMB. The filtering used here is described as well in the TMBLeR's manual. The results of this analysis were correlated with the lymph node status and tumor location.
 
 # Results
 
@@ -223,15 +224,34 @@ The tumor mutational burden metric gives a general and rough indication of the a
 
 ```{r}
 tmb <- box_read_csv("955667979176")
-tmb <- tmb[tmb$Filter == "vaf=0NoCancerMuts", !colnames(tmb) %in% "Design"]
+tmb <- tmb[tmb$Filter == "vaf=0", !colnames(tmb) %in% "Design"]
 datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
 ```
 
 ### Correlation with tumor location
 
-TMB does not seem to differ significantly between the different tumor locations, see @fig-tmb-loc.
+TMB does seem to differ significantly between the different tumor locations. Distant tumors seem to have higher mutational burden than the lymph node samples, see @fig-tmb-loc for a plot of the three locations and t-tests between the groups (treated as umpaired data).
 
 ![TMB in the different tumor locations.](./Results/tmb/Tumor_Location_vs_TMB.svg){#fig-tmb-loc width="100%" height="650px"}
+
+We can also try to take the paired nature of the data into account and use a paired Wilcoxon test to look for differances between the groups. Below you can see the plots for the different comaparisons, only looking at paired samples, see@fig-cor-paired.
+
+::: {#fig-cor-paired height="800px"}
+
+::: {.panel-tabset}
+
+# PT_vs_LNM
+![](./Results/tmb/Paired_PT_LNM.svg){width="100%" height="700px"}
+
+# PT_vs_DM 
+![](./Results/tmb/Paired_PT_DM.svg){width="100%" height="700px"}
+
+# LNM_vs_DM 
+![](./Results/tmb/Paired_LNM_DM.svg){width="100%" height="700px"}
+
+:::
+Visualization of TMB in paired samples.
+:::
 
 ### Correlation with Lymph Node status
 
