@@ -230,7 +230,7 @@ datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options 
 
 ### Correlation with tumor location
 
-TMB does seem to differ significantly between the different tumor locations. Distant tumors seem to have higher mutational burden than the lymph node samples, see @fig-tmb-loc for a plot of the three locations and t-tests between the groups (treated as unpaired data).
+The TMB does seem to differ significantly between the different tumor locations. Distant tumors seem to have higher mutational burden than the lymph node samples, see @fig-tmb-loc for a plot of the three locations and t-tests between the groups (treated as unpaired data).
 
 ![TMB in the different tumor locations.](./Results/tmb/Tumor_Location_vs_TMB.svg){#fig-tmb-loc width="100%" height="650px"}
 
@@ -342,7 +342,7 @@ TODO
 
 ## Survival Data
 
-An attempt was made to link the mutation data to the survival data. For this, samples were divided in two groups: samples with a mutation for a certain gene and another group of samples that are WT for the gene. The endpoint is Overall Survival. This was done within each sample group (i.e. primary, recurrent or lymph node).
+An attempt was made to link the mutation data to the survival data. For this, samples were divided in two groups: samples with a mutation for a certain gene and another group of samples that are WT for the gene. The endpoint is Overall Survival. This was done within each sample group (i.e. primary, recurrence or lymph node).
 
 ::: {.panel-tabset}
 
@@ -374,9 +374,9 @@ html`<p></p>`
 html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_analysis/${genes_surv_pt}_survival_curve_PT_3_common.svg" width:100% height:600px></img>`
 ```
 
-### Distant Tumor
+### Distant Metastasis
 
-These are the results for the survival analysis within distant tumors only.
+These are the results for the survival analysis within distant metastasis only.
 
 ```{r}
 dt_surv <- box_read_csv("956835681541") 
