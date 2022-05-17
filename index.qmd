@@ -35,7 +35,8 @@ box_auth()
 Here you can see the status of the report. This will be updated as sections are added or improved.
 
 - Version 1: [12/5/22] Most results included, but sections on nanostring correlation and ESR1 mutation remain to be added.
-- Version 1.1: [16/5/22] Update of TMB calculation; combinations of three variant callers and remove common variants + add paired plot
+- Version 1.1: [16/5/22] Update of TMB calculation; combinations of three variant callers and remove common variants + add paired plot.
+- Version 1.2: [17/5/22] ESR1 mutation table added.
 
 :::
 
@@ -331,9 +332,12 @@ Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 
 ## ER Mutations
 
-TODO
+Using the combination of the three variant callers, we can look for variants in ESR1. Because in the regular analysis as described above, variants in REC and LNM will be filtered out if they are also present in the primary tumor, we also ran all the variant callers on all samples. This way we can also detect ESR1 mutations in matched samples. All samples carrying a ESR1 mutation with a gnomAD frequency < 1% are shown in the table below.
 
-add ER mutation data...
+```{r}
+esr <- box_read_csv("958764984793") 
+datatable(esr[,c(2:8)], rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE))
+```
 
 ## Nanostring data
 
