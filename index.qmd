@@ -342,7 +342,7 @@ datatable(esr[,c(2:8)], rownames = FALSE, extensions = c('Buttons', 'Scroller'),
 
 ## Nanostring data
 
-The TMB scores were correlated with the signature scores obtained using Nanostring. For each, signature the pearson correlation coefficient with the TMB score was calculated. The results can be seen in the table below (table can be sorted to get most positive and negative correlating signature). Description of the signatures is in the Nanostring report.
+The TMB scores were correlated with the signature scores obtained using Nanostring. For each signature the pearson correlation coefficient with the TMB score was calculated. The results can be seen in the table below (table can be sorted to get most positive and negative correlating signature). Detailed description of the signatures is in the Nanostring report.
 
 ```{r}
 cors <- box_read_csv("958821480662") 
