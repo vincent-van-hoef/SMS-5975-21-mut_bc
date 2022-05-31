@@ -40,6 +40,7 @@ Here you can see the status of the report. This will be updated as sections are 
 - Version 1.3: [17/5/22] Table and plot of correlation between Nanostring signature and TMB score added.
 - Version 2: [19/5/22] Samples 11,12 and 19 were added to the analysis.
 - Version 2.1: [31/5/22] Oncoplots updated with matching PAM50 classification.
+- Version 2.1: [31/5/22] CNA alteration table lum to non-lum added.
 
 :::
 
@@ -332,6 +333,23 @@ The 15 most commonly amplified or deleted genes are visualized in @fig-cna-lnm.
 :::
 Most Common Alterations in Lymph Node Sample versus Primary Tumor.
 :::
+
+### Luminal to non-luminal CNA abberrations
+
+:::{.callout-note }
+
+## Additional Question
+
+"Moreover, the inherence shifts from PT to DM is supposed to be driven by copy number abberrations. Is it possible to identify any pairs shifting from luminal in PT:s to non-luminal DM:s and illustrate if this is associated bo any copy number aberration?"
+
+:::
+
+11 pairs shift from either LumA or B in the primary tumor to non-luminal in the distant metastasis. In the table below you can find which genes in these 11 DM samples are amplified or deleted.
+
+```{r}
+cna_shift <- box_read_csv("964916868849")
+datatable(cna_shift, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scrollX = TRUE, scroller = TRUE))
+```
 
 ## ER Mutations
 
