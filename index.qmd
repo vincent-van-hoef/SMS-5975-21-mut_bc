@@ -41,6 +41,7 @@ Here you can see the status of the report. This will be updated as sections are 
 - Version 2: [19/5/22] Samples 11,12 and 19 were added to the analysis.
 - Version 2.1: [31/5/22] Oncoplots updated with matching PAM50 classification.
 - Version 2.1: [31/5/22] CNA alteration table lum to non-lum added.
+- Version 2.2: [11/6/22] Split Nanostring correlations according to tumor location.
 
 :::
 
@@ -131,7 +132,7 @@ Overall, the quality of the samples and sequencing is sufficient to proceed with
 
 The number of reads overlapping a specific nucleotide is an important quality metric because it will influence the confidence in the subsequent variant calls. Moreover, the more reads cover the target, the better we will be able to detect small clones and tumor heterogeneity. After mapping the trimmed reads to the genome, the average read depth per target (7455 targets in total) and per sample is calculated. The results per sample are shown in @fig-coverage-plot.
 
-![Coverage per Sample Per Target](https://uppsala.box.com/shared/static/98qneihv5sxaowh83r6b5crpnuu9kplx.svg){#fig-coverage-plot width="100%" height="650px"}
+![Coverage per Sample Per Target](https://uppsala.box.com/shared/static/42br9vn8wvnuw40wo2mz80u4x7p2clv6.svg){#fig-coverage-plot width="100%" height="650px"}
 
 Sample 224 and 28 have rather low coverage (22x and 33x respectively), but are kept in for the further downstream analysis. But good to keep in mind. The other samples have an average coverage beween 250x and 500x which is sufficient for somatic variant calling in heterogeneous tumors.
 
@@ -143,7 +144,7 @@ Here you can find the results of the variant calling analysis for the different 
 
 The primary tumors have been called by three different variant callers and the intersect of the SNPs of these three tools was retained for further analysis. The standard format to store variant information is as VCF files. In the Box window below you can see the VCF files for each of the three variant callers as well as the merged dataset. VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary. 
 
-<iframe src="https://uppsala.app.box.com/embed/s/qel9xgwg7brlcld3ckzxnynmsc2qhwol?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/g5sfovvadfo4krj3md8kcdir4ttr8gs2?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {.panel-tabset}
 
@@ -171,7 +172,7 @@ This plot will give you an indication whether the 25 most commonly mutated genes
 
 The distant tumors have been called by Mutect2. In the Box window below you can see the VCF files obtained from the Mutect2 analysis (both raw and passing a quality filter). VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary.
 
-<iframe src="https://uppsala.app.box.com/embed/s/0t143y75tyaubwajjbbvjwj6f0r606y5?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/67s8p8ls09dq1481m6z1hwsdncfvz328?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {.panel-tabset}
 
@@ -199,7 +200,7 @@ This plot will give you an indication whether the 25 most commonly mutated genes
 
 The lymph node samples have been called by Mutect2. In the Box window below you can see the VCF files obtained from the Mutect2 analysis (both raw and passing a quality filter). VCF files are not very user friendly and are mostly analyzed through different software packages, but they can be opened in Excel if necessary.
 
-<iframe src="https://uppsala.app.box.com/embed/s/mst7xyg5uyi98zm2k9216nzaeuz1umtm?sortColumn=date&view=list" style="width:100%; height:400px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/ukr138ho0ei28mmhlh225wvhrlbwtasz?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 ::: {.panel-tabset}
 
@@ -228,7 +229,7 @@ This plot will give you an indication whether the 25 most commonly mutated genes
 The tumor mutational burden metric gives a general and rough indication of the amount of mutation in a specific tumor. It is defined as the number of mutations per Mb. The filtering strategy will influence this metric quite strongly but there is no consensus on a specific strategy. Here synonymous mutations have been kept, while common mutations have been filtered out, as is described in the software manual.
 
 ```{r}
-tmb <- box_read_csv("955667979176")
+tmb <- box_search("TMB_Result_table.csv") %>% box_read_csv()
 tmb <- tmb[tmb$Filter == "vaf=0", !colnames(tmb) %in% "Design"]
 datatable(tmb, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, scrollX = TRUE))
 ```
@@ -273,7 +274,7 @@ Copy number alterations were estimated using the R package pureCN. In this analy
 In below table you see an overview of the alteration in a specific gene and sample. You can look for specific genes by using the search field.
 
 ```{r}
-dm_gene_no <- box_read_csv("956229121134")
+dm_gene_no <- box_search("distant_tumor_all_genes.csv") %>% box_read_csv()
 datatable(dm_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
 ```
 
@@ -283,7 +284,7 @@ The full results of the pureCN analysis per patient can be downloaded in the win
 * The alteration per chromosome and patient can be found in the chromosomes folder
 * General info per sample can be found in the overview folder.
 
-<iframe src="https://uppsala.app.box.com/embed/s/vfavpoydsc4814f7l0k5yemu1urvdx4c?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/0y83n7nx9bh8we58pr2gka3q0e75413i?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 The 15 most commonly amplified or deleted genes are visualized in @fig-cna-dm.
 
@@ -306,7 +307,7 @@ Most Common Alterations in Distant Tumor versus Primary Tumor.
 In below table you see an overview of the alteration in a specific gene and sample. You can look for specific genes by using the search field.
 
 ```{r}
-ln_gene_no <- box_read_csv("956229079317") 
+ln_gene_no <- box_search("lymph_node_all_genes.csv") %>% box_read_csv() 
 datatable(ln_gene_no, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE, order = list(list(5, 'desc'))))
 ```
 
@@ -316,7 +317,7 @@ The full results of the pureCN analysis per patient can be downloaded in the win
 * The alteration per chromosome and patient can be found in the chromosomes folder
 * General info per sample can be found in the overview folder.
 
-<iframe src="https://uppsala.app.box.com/embed/s/kkzcsx0nv9hdgz677mwe5jsd657h3fhw?sortColumn=date&view=list" style="width:100%; height:600px;"></iframe>
+<iframe src="https://uppsala.app.box.com/embed/s/k6l0h1k1f38ubhcob58upube8ncl98cg?sortColumn=date&view=list" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
 
 The 15 most commonly amplified or deleted genes are visualized in @fig-cna-lnm.
 
@@ -356,7 +357,7 @@ datatable(cna_shift, rownames = FALSE, extensions = c('Buttons', 'Scroller'), op
 Using the combination of the three variant callers, we can look for variants in ESR1. Because in the regular analysis as described above, variants in REC and LNM will be filtered out if they are also present in the primary tumor, we also ran all the variant callers on all samples. This way we can also detect ESR1 mutations in matched samples. All samples carrying a ESR1 mutation with a gnomAD frequency < 1% are shown in the table below.
 
 ```{r}
-esr <- box_read_csv("958764984793") 
+esr <- box_search("ESR1_Mut.csv") %>% box_read_csv() 
 datatable(esr[,c(2:8)], rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE))
 ```
 
@@ -364,18 +365,22 @@ datatable(esr[,c(2:8)], rownames = FALSE, extensions = c('Buttons', 'Scroller'),
 
 The TMB scores were correlated with the signature scores obtained using Nanostring. For each signature the pearson correlation coefficient with the TMB score was calculated. The results can be seen in the table below (table can be sorted to get most positive and negative correlating signature). Detailed description of the signatures is in the Nanostring report.
 
+::: {.panel-tabset}
+
+# Primary Tumor
+
 ```{r}
-cors <- box_read_csv("958821480662") 
+cors <- box_search("TMB_corr_PT.csv") %>% box_read_csv() 
 cors$cor.coef <- gsub("c\\(cor = ", "", cors$cor.coef)
 cors$cor.coef <- round(as.numeric(gsub(")", "", cors$cor.coef)), digits = 2)
 datatable(cors[,c(2:4)], rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE))
 ```
 
-Select a gene below to visualize the correlation.
+Select a signature below to visualize the correlation.
 
 ```{r}
-tmbl <- list.files(path = "./Results/tmb/TMB_Corr/", pattern = "_TMB_correlation.svg")
-tmbl <- as.list(gsub("_TMB_correlation.svg", "", tmbl))
+tmbl <- list.files(path = "./Results/tmb/TMB_Corr/PT/", pattern = "_TMB_correlation_PT.svg")
+tmbl <- as.list(gsub("_TMB_correlation_PT.svg", "", tmbl))
 ojs_define(plots_tmb_corr = tmbl)
 ```
 
@@ -387,9 +392,66 @@ html`<p></p>`
 ```{ojs}
 //| label: fig-corr-tmb
 //| fig-cap: "Correlation of Nanostring Signatures with the TMB score"
-html`<img src="./Results/tmb/TMB_Corr/${sig_tmb_corr}_TMB_correlation.svg" width:100% height:600px></img>`
+html`<img src="./Results/tmb/TMB_Corr/PT/${sig_tmb_corr}_TMB_correlation_PT.svg" width:100% height:600px></img>`
 ```
 
+# Distant Metastasis
+
+```{r}
+cors <- box_search("TMB_corr_REC.csv") %>% box_read_csv() 
+cors$cor.coef <- gsub("c\\(cor = ", "", cors$cor.coef)
+cors$cor.coef <- round(as.numeric(gsub(")", "", cors$cor.coef)), digits = 2)
+datatable(cors[,c(2:4)], rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE))
+```
+
+Select a signature below to visualize the correlation.
+
+```{r}
+tmbl_rec <- list.files(path = "./Results/tmb/TMB_Corr/REC/", pattern = "_TMB_correlation_REC.svg")
+tmbl_rec <- as.list(gsub("_TMB_correlation_REC.svg", "", tmbl_rec))
+ojs_define(plots_tmb_corr_rec = tmbl_rec)
+```
+
+```{ojs}
+viewof sig_tmb_corr_rec = Inputs.select(plots_tmb_corr_rec, { label: "Choose Signature to correlate: " })
+html`<p></p>`
+```
+
+```{ojs}
+//| label: fig-corr-tmb-rec
+//| fig-cap: "Correlation of Nanostring Signatures with the TMB score"
+html`<img src="./Results/tmb/TMB_Corr/REC/${sig_tmb_corr_rec}_TMB_correlation_REC.svg" width:100% height:600px></img>`
+```
+
+# Lymph Node Metastasis
+
+```{r}
+cors <- box_search("TMB_corr_LNM.csv") %>% box_read_csv() 
+cors$cor.coef <- gsub("c\\(cor = ", "", cors$cor.coef)
+cors$cor.coef <- round(as.numeric(gsub(")", "", cors$cor.coef)), digits = 2)
+datatable(cors[,c(2:4)], rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE))
+```
+
+Select a signature below to visualize the correlation.
+
+```{r}
+tmbl_lnm <- list.files(path = "./Results/tmb/TMB_Corr/LNM/", pattern = "_TMB_correlation_LNM.svg")
+tmbl_lnm <- as.list(gsub("_TMB_correlation_LNM.svg", "", tmbl_lnm))
+ojs_define(plots_tmb_corr_lnm = tmbl_lnm)
+```
+
+```{ojs}
+viewof sig_tmb_corr_lnm = Inputs.select(plots_tmb_corr_lnm, { label: "Choose Signature to correlate: " })
+html`<p></p>`
+```
+
+```{ojs}
+//| label: fig-corr-tmb-lnm
+//| fig-cap: "Correlation of Nanostring Signatures with the TMB score"
+html`<img src="./Results/tmb/TMB_Corr/LNM/${sig_tmb_corr_lnm}_TMB_correlation_LNM.svg" width:100% height:600px></img>`
+```
+
+:::
 
 ## Survival Data
 
@@ -402,7 +464,7 @@ An attempt was made to link the mutation data to the survival data. For this, sa
 These are the results for the survival analysis within primary tumors only.
 
 ```{r}
-pt_surv <- box_read_csv("956836277408") 
+pt_surv <- box_search("Top30_mut_genes_surv_gss1_3_common.csv") %>% box_read_csv() 
 datatable(pt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
@@ -430,7 +492,7 @@ html`<img src="./Results/variant_calls_all/merged_calls/Plots/3_common/survival_
 These are the results for the survival analysis within distant metastasis only.
 
 ```{r}
-dt_surv <- box_read_csv("956835681541") 
+dt_surv <- box_search("Top_10_mut_genes_surv_gss1_distance_tumor.csv") %>% box_read_csv() 
 datatable(dt_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
@@ -458,7 +520,7 @@ html`<img src="./Results/distance_tumor/maf/plots/${genes_surv_dt}_survival_curv
 These are the results for the survival analysis within lymph node samples only.
 
 ```{r}
-ln_surv <- box_read_csv("956833214195") 
+ln_surv <- box_search("Top_10_mut_genes_surv_gss1_lymph_node.csv") %>% box_read_csv() 
 datatable(ln_surv, rownames = FALSE, extensions = c('Buttons', 'Scroller'), options = list(dom = 'Bfrtip', buttons = c("copy", "csv", "excel"), deferRender = TRUE, scrollY = 200, scroller = TRUE))
 ```
 
